@@ -29,7 +29,7 @@
 
 ;;; Code:
 
-(defconst iTBoyers-packages
+(defconst iTBoyer-org-packages
   '(
     (org :location built-in)
     ;; org-mac-link
@@ -45,10 +45,10 @@
     )
  )
 
-(defun zilongshanren-org/post-init-org-pomodoro ()
+(defun iTBoyer-org/post-init-org-pomodoro ()
   (zilongshanren/pomodoro-notification))
 
-(defun zilongshanren-org/post-init-org ()
+(defun iTBoyer-org/post-init-org ()
   (add-hook 'org-mode-hook (lambda () (spacemacs/toggle-line-numbers-off)) 'append)
   (with-eval-after-load 'org
     (progn
@@ -519,7 +519,7 @@ holding contextual information."
                           (concat (org-html-section first-content "" info) contents))
                         (org-html--container headline info))))))))))
 
-(defun zilongshanren-org/init-org-mac-link ()
+(defun iTBoyer-org/init-org-mac-link ()
   (use-package org-mac-link
     :commands org-mac-grab-link
     :init
@@ -529,23 +529,23 @@ holding contextual information."
                   (define-key org-mode-map (kbd "C-c g") 'org-mac-grab-link))))
     :defer t))
 
-(defun zilongshanren-org/post-init-ox-reveal ()
+(defun iTBoyer-org/post-init-ox-reveal ()
   (setq org-reveal-root "file:///Users/guanghui/.emacs.d/reveal-js"))
 
 
-(defun zilongshanren-org/init-org-tree-slide ()
+(defun iTBoyer-org/init-org-tree-slide ()
   (use-package org-tree-slide
     :init
     (spacemacs/set-leader-keys "oto" 'org-tree-slide-mode)))
 
 
-(defun zilongshanren-org/init-org-download ()
+(defun iTBoyer-org/init-org-download ()
   (use-package org-download
     :defer t
     :init
     (org-download-enable)))
 
-(defun zilongshanren-org/init-plain-org-wiki ()
+(defun iTBoyer-org/init-plain-org-wiki ()
   (use-package plain-org-wiki
     :init
     (setq pow-directory "~/hsg/hexo/iNotes")))
@@ -554,20 +554,20 @@ holding contextual information."
   (use-package ob-typescript
     :init))
 
-(defun zilongshanren-org/init-worf ()
+(defun iTBoyer-org/init-worf ()
   (use-package worf
     :defer t
     :init
     (add-hook 'org-mode-hook 'worf-mode)))
 
-(defun zilongshanren-org/post-init-deft ()
+(defun iTBoyer-org/post-init-deft ()
   (progn
     (setq deft-use-filter-string-for-filename t)
     (setq deft-recursive t)
     (setq deft-extension "org")
     (setq deft-directory deft-dir)))
 
-(defun zilongshanren-org/init-sound-wav ()
+(defun iTBoyer-org/init-sound-wav ()
   (use-package sound-wav
     :defer t
     :init))
