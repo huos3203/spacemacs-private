@@ -48,17 +48,21 @@
 		847B186922F85DB1002ED634 /* liberime.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = liberime.so; sourceTree = "<group>"; };
 		847B186A22F85DB1002ED634 /* init.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = init.el; sourceTree = "<group>"; };
 		847B186B22F85DB1002ED634 /* README.org */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.org; sourceTree = "<group>"; };
+		84DDAB5C22F867F6006660D4 /* init-zl.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = "init-zl.el"; sourceTree = "<group>"; };
+		84DDAB5D22F86824006660D4 /* 安装说明.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "安装说明.md"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
 		847B17EE22F85D37002ED634 = {
 			isa = PBXGroup;
 			children = (
+				84DDAB5D22F86824006660D4 /* 安装说明.md */,
 				847B186522F85DB1002ED634 /* custom.el */,
 				847B183622F85DB1002ED634 /* ditaa.jar */,
 				847B183422F85DB1002ED634 /* game_win.wav */,
 				847B186A22F85DB1002ED634 /* init.el */,
 				847B186822F85DB1002ED634 /* init-master.el */,
+				84DDAB5C22F867F6006660D4 /* init-zl.el */,
 				847B183722F85DB1002ED634 /* layers */,
 				847B186922F85DB1002ED634 /* liberime.so */,
 				847B183322F85DB1002ED634 /* plantuml.jar */,
