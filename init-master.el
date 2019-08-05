@@ -646,4 +646,3 @@ unwanted space when exporting org-mode to hugo markdown."
  '(sp-show-pair-match-face ((t (:background "#272822" :foreground "gray" :inverse-video t :weight normal))))
  '(web-mode-current-element-highlight-face ((t (:background "dark gray")))))
 ;; Do not write anything past this comment. This is where Emacs will
-;

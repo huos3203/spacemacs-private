@@ -1,0 +1,272 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXFileReference section */
+		847B183322F85DB1002ED634 /* plantuml.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = plantuml.jar; sourceTree = "<group>"; };
+		847B183422F85DB1002ED634 /* game_win.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = game_win.wav; sourceTree = "<group>"; };
+		847B183522F85DB1002ED634 /* posframe.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = posframe.el; sourceTree = "<group>"; };
+		847B183622F85DB1002ED634 /* ditaa.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = ditaa.jar; sourceTree = "<group>"; };
+		847B183922F85DB1002ED634 /* packages.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = packages.el; sourceTree = "<group>"; };
+		847B183A22F85DB1002ED634 /* config.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = config.el; sourceTree = "<group>"; };
+		847B183D22F85DB1002ED634 /* xml-parse.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = "xml-parse.el"; sourceTree = "<group>"; };
+		847B183E22F85DB1002ED634 /* doxymacs.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = doxymacs.el; sourceTree = "<group>"; };
+		847B184022F85DB1002ED634 /* compile-dwim.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = "compile-dwim.el"; sourceTree = "<group>"; };
+		847B184222F85DB1002ED634 /* nodejs-repl-eval.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = "nodejs-repl-eval.el"; sourceTree = "<group>"; };
+		847B184322F85DB1002ED634 /* funcs.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = funcs.el; sourceTree = "<group>"; };
+		847B184522F85DB1002ED634 /* packages.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = packages.el; sourceTree = "<group>"; };
+		847B184622F85DB1002ED634 /* config.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = config.el; sourceTree = "<group>"; };
+		847B184722F85DB1002ED634 /* funcs.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = funcs.el; sourceTree = "<group>"; };
+		847B184922F85DB1002ED634 /* packages.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = packages.el; sourceTree = "<group>"; };
+		847B184A22F85DB1002ED634 /* config.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = config.el; sourceTree = "<group>"; };
+		847B184B22F85DB1002ED634 /* funcs.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = funcs.el; sourceTree = "<group>"; };
+		847B184D22F85DB1002ED634 /* packages.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = packages.el; sourceTree = "<group>"; };
+		847B184E22F85DB1002ED634 /* config.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = config.el; sourceTree = "<group>"; };
+		847B185022F85DB1002ED634 /* keybindings.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = keybindings.el; sourceTree = "<group>"; };
+		847B185122F85DB1002ED634 /* config.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = config.el; sourceTree = "<group>"; };
+		847B185222F85DB1002ED634 /* layers.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = layers.el; sourceTree = "<group>"; };
+		847B185422F85DB1002ED634 /* packages.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = packages.el; sourceTree = "<group>"; };
+		847B185522F85DB1002ED634 /* config.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = config.el; sourceTree = "<group>"; };
+		847B185622F85DB1002ED634 /* layers.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = layers.el; sourceTree = "<group>"; };
+		847B185722F85DB1002ED634 /* funcs.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = funcs.el; sourceTree = "<group>"; };
+		847B185922F85DB1002ED634 /* packages.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = packages.el; sourceTree = "<group>"; };
+		847B185A22F85DB1002ED634 /* config.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = config.el; sourceTree = "<group>"; };
+		847B185B22F85DB1002ED634 /* funcs.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = funcs.el; sourceTree = "<group>"; };
+		847B185D22F85DB1002ED634 /* keybindings.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = keybindings.el; sourceTree = "<group>"; };
+		847B185E22F85DB1002ED634 /* config.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = config.el; sourceTree = "<group>"; };
+		847B185F22F85DB1002ED634 /* layers.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = layers.el; sourceTree = "<group>"; };
+		847B186022F85DB1002ED634 /* README.org */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.org; sourceTree = "<group>"; };
+		847B186322F85DB1002ED634 /* more */ = {isa = PBXFileReference; lastKnownFileType = text; path = more; sourceTree = "<group>"; };
+		847B186422F85DB1002ED634 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		847B186522F85DB1002ED634 /* custom.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = custom.el; sourceTree = "<group>"; };
+		847B186622F85DB1002ED634 /* README_CN.org */ = {isa = PBXFileReference; lastKnownFileType = text; path = README_CN.org; sourceTree = "<group>"; };
+		847B186822F85DB1002ED634 /* init-master.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = "init-master.el"; sourceTree = "<group>"; };
+		847B186922F85DB1002ED634 /* liberime.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = liberime.so; sourceTree = "<group>"; };
+		847B186A22F85DB1002ED634 /* init.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = init.el; sourceTree = "<group>"; };
+		847B186B22F85DB1002ED634 /* README.org */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.org; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		847B17EE22F85D37002ED634 = {
+			isa = PBXGroup;
+			children = (
+				847B186522F85DB1002ED634 /* custom.el */,
+				847B183622F85DB1002ED634 /* ditaa.jar */,
+				847B183422F85DB1002ED634 /* game_win.wav */,
+				847B186A22F85DB1002ED634 /* init.el */,
+				847B186822F85DB1002ED634 /* init-master.el */,
+				847B183722F85DB1002ED634 /* layers */,
+				847B186922F85DB1002ED634 /* liberime.so */,
+				847B183322F85DB1002ED634 /* plantuml.jar */,
+				847B183522F85DB1002ED634 /* posframe.el */,
+				847B186622F85DB1002ED634 /* README_CN.org */,
+				847B186B22F85DB1002ED634 /* README.org */,
+				847B186122F85DB1002ED634 /* snippets */,
+			);
+			sourceTree = "<group>";
+		};
+		847B183722F85DB1002ED634 /* layers */ = {
+			isa = PBXGroup;
+			children = (
+				847B183822F85DB1002ED634 /* zilongshanren-programming */,
+				847B184422F85DB1002ED634 /* zilongshanren-org */,
+				847B184822F85DB1002ED634 /* zilongshanren-ui */,
+				847B184C22F85DB1002ED634 /* iTBoyer-og */,
+				847B184F22F85DB1002ED634 /* zilongshanren */,
+				847B185322F85DB1002ED634 /* zilongshanren-misc */,
+				847B185822F85DB1002ED634 /* zilongshanren-better-defaults */,
+				847B185C22F85DB1002ED634 /* iTBoyers */,
+			);
+			path = layers;
+			sourceTree = "<group>";
+		};
+		847B183822F85DB1002ED634 /* zilongshanren-programming */ = {
+			isa = PBXGroup;
+			children = (
+				847B183922F85DB1002ED634 /* packages.el */,
+				847B183A22F85DB1002ED634 /* config.el */,
+				847B183B22F85DB1002ED634 /* local */,
+				847B184322F85DB1002ED634 /* funcs.el */,
+			);
+			path = "zilongshanren-programming";
+			sourceTree = "<group>";
+		};
+		847B183B22F85DB1002ED634 /* local */ = {
+			isa = PBXGroup;
+			children = (
+				847B183C22F85DB1002ED634 /* doxymacs */,
+				847B183F22F85DB1002ED634 /* compile-dwim */,
+				847B184122F85DB1002ED634 /* nodejs-repl-eval */,
+			);
+			path = local;
+			sourceTree = "<group>";
+		};
+		847B183C22F85DB1002ED634 /* doxymacs */ = {
+			isa = PBXGroup;
+			children = (
+				847B183D22F85DB1002ED634 /* xml-parse.el */,
+				847B183E22F85DB1002ED634 /* doxymacs.el */,
+			);
+			path = doxymacs;
+			sourceTree = "<group>";
+		};
+		847B183F22F85DB1002ED634 /* compile-dwim */ = {
+			isa = PBXGroup;
+			children = (
+				847B184022F85DB1002ED634 /* compile-dwim.el */,
+			);
+			path = "compile-dwim";
+			sourceTree = "<group>";
+		};
+		847B184122F85DB1002ED634 /* nodejs-repl-eval */ = {
+			isa = PBXGroup;
+			children = (
+				847B184222F85DB1002ED634 /* nodejs-repl-eval.el */,
+			);
+			path = "nodejs-repl-eval";
+			sourceTree = "<group>";
+		};
+		847B184422F85DB1002ED634 /* zilongshanren-org */ = {
+			isa = PBXGroup;
+			children = (
+				847B184522F85DB1002ED634 /* packages.el */,
+				847B184622F85DB1002ED634 /* config.el */,
+				847B184722F85DB1002ED634 /* funcs.el */,
+			);
+			path = "zilongshanren-org";
+			sourceTree = "<group>";
+		};
+		847B184822F85DB1002ED634 /* zilongshanren-ui */ = {
+			isa = PBXGroup;
+			children = (
+				847B184922F85DB1002ED634 /* packages.el */,
+				847B184A22F85DB1002ED634 /* config.el */,
+				847B184B22F85DB1002ED634 /* funcs.el */,
+			);
+			path = "zilongshanren-ui";
+			sourceTree = "<group>";
+		};
+		847B184C22F85DB1002ED634 /* iTBoyer-og */ = {
+			isa = PBXGroup;
+			children = (
+				847B184D22F85DB1002ED634 /* packages.el */,
+				847B184E22F85DB1002ED634 /* config.el */,
+			);
+			path = "iTBoyer-og";
+			sourceTree = "<group>";
+		};
+		847B184F22F85DB1002ED634 /* zilongshanren */ = {
+			isa = PBXGroup;
+			children = (
+				847B185022F85DB1002ED634 /* keybindings.el */,
+				847B185122F85DB1002ED634 /* config.el */,
+				847B185222F85DB1002ED634 /* layers.el */,
+			);
+			path = zilongshanren;
+			sourceTree = "<group>";
+		};
+		847B185322F85DB1002ED634 /* zilongshanren-misc */ = {
+			isa = PBXGroup;
+			children = (
+				847B185422F85DB1002ED634 /* packages.el */,
+				847B185522F85DB1002ED634 /* config.el */,
+				847B185622F85DB1002ED634 /* layers.el */,
+				847B185722F85DB1002ED634 /* funcs.el */,
+			);
+			path = "zilongshanren-misc";
+			sourceTree = "<group>";
+		};
+		847B185822F85DB1002ED634 /* zilongshanren-better-defaults */ = {
+			isa = PBXGroup;
+			children = (
+				847B185922F85DB1002ED634 /* packages.el */,
+				847B185A22F85DB1002ED634 /* config.el */,
+				847B185B22F85DB1002ED634 /* funcs.el */,
+			);
+			path = "zilongshanren-better-defaults";
+			sourceTree = "<group>";
+		};
+		847B185C22F85DB1002ED634 /* iTBoyers */ = {
+			isa = PBXGroup;
+			children = (
+				847B185D22F85DB1002ED634 /* keybindings.el */,
+				847B185E22F85DB1002ED634 /* config.el */,
+				847B185F22F85DB1002ED634 /* layers.el */,
+				847B186022F85DB1002ED634 /* README.org */,
+			);
+			path = iTBoyers;
+			sourceTree = "<group>";
+		};
+		847B186122F85DB1002ED634 /* snippets */ = {
+			isa = PBXGroup;
+			children = (
+				847B186222F85DB1002ED634 /* org-mode */,
+				847B186422F85DB1002ED634 /* README.md */,
+			);
+			path = snippets;
+			sourceTree = "<group>";
+		};
+		847B186222F85DB1002ED634 /* org-mode */ = {
+			isa = PBXGroup;
+			children = (
+				847B186322F85DB1002ED634 /* more */,
+			);
+			path = "org-mode";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXProject section */
+		847B17EF22F85D37002ED634 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1030;
+			};
+			buildConfigurationList = 847B17F222F85D37002ED634 /* Build configuration list for PBXProject "iSpacemacsd" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 847B17EE22F85D37002ED634;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+			);
+		};
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+		847B17F322F85D37002ED634 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		847B17F422F85D37002ED634 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		847B17F222F85D37002ED634 /* Build configuration list for PBXProject "iSpacemacsd" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				847B17F322F85D37002ED634 /* Debug */,
+				847B17F422F85D37002ED634 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 847B17EF22F85D37002ED634 /* Project object */;
+}
