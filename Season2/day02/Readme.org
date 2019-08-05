@@ -16,9 +16,9 @@
 
 2. disable backup file
 #+BEGIN_SRC emacs-lisp
-(setq make-backup-files nil)
+  (setq make-backup-files nil)
 #+END_SRC
-use C-' to open another buffer to edit source code.
+use C-c-' to open another buffer to edit source code.
 Make source code fancy in the org file.
 #+BEGIN_SRC emacs-lisp
   (require 'org)

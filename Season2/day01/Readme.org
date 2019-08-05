@@ -27,8 +27,11 @@
 ** Learn some elisp(emacs lisp)
 - use learnxinyminutes website to learn emacs lisp.
 - at least you know how to define variable, functions
+      * `C-x C-e`: 执行scratch脚本
+      * `C-h f`:调出光标定位的函数相关说明文档
 - You should know how to make a function callable and how to set a key binding for the function.
 ** Start to hacking Emacs from the day one!
+新建文件`C-x C-f`,保存为`.emacs.d/init.el`
 - turn off tool-bar
 - turn off scroll-bar
 - show linum-mode
