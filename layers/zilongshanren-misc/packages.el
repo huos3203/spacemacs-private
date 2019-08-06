@@ -1269,7 +1269,7 @@ Search for a search tool in the order provided by `dotspacemacs-search-tools'."
     ;; prefer two way ediff
     (setq magit-ediff-dwim-show-on-hunks t)
 
-    (setq magit-repository-directories '("~/cocos2d-x/"))
+    (setq magit-repository-directories '("~/hsg/hexo/"))
     (setq magit-push-always-verify nil)
 
     (eval-after-load 'magit
@@ -1287,7 +1287,7 @@ Search for a search tool in the order provided by `dotspacemacs-search-tools'."
 
 (defun zilongshanren-misc/post-init-markdown-mode ()
   (progn
-    (add-to-list 'auto-mode-alist '("\\.mdown\\'" . markdown-mode))
+    (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
     (with-eval-after-load 'markdown-mode
       (progn

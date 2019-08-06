@@ -15,7 +15,7 @@
   (setq
    org-agenda-dir "~/hsg/hexo/iNotes"
    deft-dir "~/hsg/hexo/iNotes"
-   blog-admin-dir "~/zilongshanren.com"))
+   blog-admin-dir "~/hsg/hexo/"))
 
 
 ;;load sensitive data

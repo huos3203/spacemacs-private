@@ -50,6 +50,8 @@
 		847B186B22F85DB1002ED634 /* README.org */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.org; sourceTree = "<group>"; };
 		84DDAB5C22F867F6006660D4 /* init-zl.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = "init-zl.el"; sourceTree = "<group>"; };
 		84DDAB5D22F86824006660D4 /* 安装说明.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "安装说明.md"; sourceTree = "<group>"; };
+		84DDB13122F9B1AD006660D4 /* markdown-mode */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "markdown-mode"; sourceTree = "<group>"; };
+		84DDB13222F9B358006660D4 /* plantuml-mode */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "plantuml-mode"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -208,6 +210,8 @@
 		847B186122F85DB1002ED634 /* snippets */ = {
 			isa = PBXGroup;
 			children = (
+				84DDB13222F9B358006660D4 /* plantuml-mode */,
+				84DDB13122F9B1AD006660D4 /* markdown-mode */,
 				847B186222F85DB1002ED634 /* org-mode */,
 				847B186422F85DB1002ED634 /* README.md */,
 			);
