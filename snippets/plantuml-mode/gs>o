@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: 消息圆箭头
+# key: gs>o
+# --
+
+$1 ->o $2:$3

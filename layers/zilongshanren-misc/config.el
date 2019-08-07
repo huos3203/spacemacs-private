@@ -8,8 +8,9 @@
 ;; This file is not part of GNU Emacs.
 ;;
 ;;; License: GPLv3
-
-
+;;
+;;使用方法:
+;;在插入模式下, 8me esc 会自动输入:iTBoyer@qq.com
 (define-abbrev-table 'global-abbrev-table '(
 
                                             ;; math/unicode symbols
@@ -22,7 +23,7 @@
                                             ("8zh" "@~chinese")
                                             ("8sp" "spacemacs")
                                             ;; email
-                                            ("8me" "guanghui8827@gmail.com")
+                                            ("8me" "iTBoyer@qq.com")
 
                                             ;; computing tech
                                             ("8wp" "Wikipedia")
@@ -36,10 +37,10 @@
                                             ("82dx" "Cocos2D-X")
 
                                             ;; signature
-                                            ("8zl" "zilongshanren")
+                                            ("8zl" "iTBoyer")
                                             ;; emacs regex
                                             ("8d" "\\([0-9]+?\\)")
                                             ("8str" "\\([^\"]+?\\)\"")))
 
 
-(setq user-mail-address "guanghui8827@gmail.com")
+(setq user-mail-address "iTBoyer@qq.com")

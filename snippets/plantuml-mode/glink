@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: 安排任务顺序
+# key: glink
+# --
+
+[$1] -> [$2]

@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: 新建用例
+# key: guc
+# --
+
+($1) as $2

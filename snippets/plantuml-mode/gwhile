@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: 活动循环
+# key: gwhile
+# --
+while (${1:条件}) is ($2)
+:$3;
+endwhile

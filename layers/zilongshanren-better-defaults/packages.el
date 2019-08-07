@@ -17,7 +17,7 @@
     (recentf :location built-in)
     )
 )
-
+;;设置:最近打开展示的类型清单
 (defun zilongshanren-better-defaults/post-init-recentf ()
   (progn
     (setq recentf-exclude
@@ -41,6 +41,7 @@
             ".*png$"))
     (setq recentf-max-saved-items 2048)))
 
+;; 设置加载目录插件相关的偏好配置
 (defun zilongshanren-better-defaults/init-dired-mode ()
   (use-package dired-mode
     :defer t

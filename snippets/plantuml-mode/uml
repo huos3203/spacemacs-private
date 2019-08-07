@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: uml
+# key: uml
+# --
+
+scale 2
+page 1x1
+title
+${1:}
+创建时间：`!v strftime("%Y-%m-%d %H:%M:%S%z")` 
+endtitle
+left header
+$2
+endheader

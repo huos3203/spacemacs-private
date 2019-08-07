@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: 新建活动图
+# key: gh
+# --
+start
+:$1;
+
+stop

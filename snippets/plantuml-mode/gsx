@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: 新建时序图
+# key: gsx
+# --
+autonumber ${0:0}
+'actor,boundary,control,entity,database
+${2:actor} $3 as $4

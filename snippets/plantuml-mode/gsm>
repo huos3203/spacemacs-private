@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: 普通消息细箭头
+# key: gsm>
+# --
+
+$1 -[#${3:black}]>> $2:$4

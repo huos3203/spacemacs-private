@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: 创建参与者
+# key: gss
+# --
+
+actor $1 as $2

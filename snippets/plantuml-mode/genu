@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: 枚举 
+# key: genu
+# --
+enum "$1" as $0 {
+}

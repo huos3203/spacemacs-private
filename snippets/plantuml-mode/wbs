@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: 分解任务图
+# key: wbs
+# --
+@startwbs
+* ${1:根}
+@endwbs

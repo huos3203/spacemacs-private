@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: 丢失的消息
+# key: gs>x
+# --
+
+$1 ->x $2:$3

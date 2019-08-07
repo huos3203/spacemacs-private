@@ -1,0 +1,16 @@
+scale 2
+page 1x1
+title
+
+创建时间：Y 
+endtitle
+left header
+
+endheader
+
+class "" as  {
+--属性组 --
++ var :String=""	
+__ 函数组__
++ func (:,:)
+}

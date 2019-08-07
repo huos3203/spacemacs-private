@@ -36,10 +36,6 @@
 		847B185922F85DB1002ED634 /* packages.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = packages.el; sourceTree = "<group>"; };
 		847B185A22F85DB1002ED634 /* config.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = config.el; sourceTree = "<group>"; };
 		847B185B22F85DB1002ED634 /* funcs.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = funcs.el; sourceTree = "<group>"; };
-		847B185D22F85DB1002ED634 /* keybindings.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = keybindings.el; sourceTree = "<group>"; };
-		847B185E22F85DB1002ED634 /* config.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = config.el; sourceTree = "<group>"; };
-		847B185F22F85DB1002ED634 /* layers.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = layers.el; sourceTree = "<group>"; };
-		847B186022F85DB1002ED634 /* README.org */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.org; sourceTree = "<group>"; };
 		847B186322F85DB1002ED634 /* more */ = {isa = PBXFileReference; lastKnownFileType = text; path = more; sourceTree = "<group>"; };
 		847B186422F85DB1002ED634 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		847B186522F85DB1002ED634 /* custom.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = custom.el; sourceTree = "<group>"; };
@@ -85,7 +81,6 @@
 				847B184F22F85DB1002ED634 /* zilongshanren */,
 				847B185322F85DB1002ED634 /* zilongshanren-misc */,
 				847B185822F85DB1002ED634 /* zilongshanren-better-defaults */,
-				847B185C22F85DB1002ED634 /* iTBoyers */,
 			);
 			path = layers;
 			sourceTree = "<group>";
@@ -194,17 +189,6 @@
 				847B185B22F85DB1002ED634 /* funcs.el */,
 			);
 			path = "zilongshanren-better-defaults";
-			sourceTree = "<group>";
-		};
-		847B185C22F85DB1002ED634 /* iTBoyers */ = {
-			isa = PBXGroup;
-			children = (
-				847B185D22F85DB1002ED634 /* keybindings.el */,
-				847B185E22F85DB1002ED634 /* config.el */,
-				847B185F22F85DB1002ED634 /* layers.el */,
-				847B186022F85DB1002ED634 /* README.org */,
-			);
-			path = iTBoyers;
 			sourceTree = "<group>";
 		};
 		847B186122F85DB1002ED634 /* snippets */ = {

@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: 新建角色
+# key: gac
+# --
+
+:$1: as $2

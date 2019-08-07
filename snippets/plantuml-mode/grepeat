@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: 活动循环分支
+# key: grepeat
+# --
+repeat
+:$1;
+repeat while(${2:条件})

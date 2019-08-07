@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: 返回消息,可选
+# key: gsbm
+# --
+
+$1 --[#${3:black}]> $2:$4

@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: 激活参与者
+# key: gsa
+# --
+activate $1
+$2
+deactivate $1

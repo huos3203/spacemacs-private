@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: 分配任务
+# key: gwho
+# --
+
+on \{${2:hsg:100%}\} 

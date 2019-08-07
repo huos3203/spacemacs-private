@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: 创建里程碑
+# key: gmile
+# --
+
+[$1] happens at [$2]'s end

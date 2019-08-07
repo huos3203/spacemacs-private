@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: 创建接口
+# key: gii
+# --
+interface "$1" as $0{
+__ 函数组__
+${6:+} func $7($7:$8,$9:$10)
+
+}

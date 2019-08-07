@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: 创建并行任务
+# key: gstart
+# --
+
+[$1] starts at [$2]'s start
