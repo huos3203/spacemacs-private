@@ -24,8 +24,6 @@
 		847B184922F85DB1002ED634 /* packages.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = packages.el; sourceTree = "<group>"; };
 		847B184A22F85DB1002ED634 /* config.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = config.el; sourceTree = "<group>"; };
 		847B184B22F85DB1002ED634 /* funcs.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = funcs.el; sourceTree = "<group>"; };
-		847B184D22F85DB1002ED634 /* packages.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = packages.el; sourceTree = "<group>"; };
-		847B184E22F85DB1002ED634 /* config.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = config.el; sourceTree = "<group>"; };
 		847B185022F85DB1002ED634 /* keybindings.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = keybindings.el; sourceTree = "<group>"; };
 		847B185122F85DB1002ED634 /* config.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = config.el; sourceTree = "<group>"; };
 		847B185222F85DB1002ED634 /* layers.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = layers.el; sourceTree = "<group>"; };
@@ -77,7 +75,6 @@
 				847B183822F85DB1002ED634 /* zilongshanren-programming */,
 				847B184422F85DB1002ED634 /* zilongshanren-org */,
 				847B184822F85DB1002ED634 /* zilongshanren-ui */,
-				847B184C22F85DB1002ED634 /* iTBoyer-og */,
 				847B184F22F85DB1002ED634 /* zilongshanren */,
 				847B185322F85DB1002ED634 /* zilongshanren-misc */,
 				847B185822F85DB1002ED634 /* zilongshanren-better-defaults */,
@@ -149,15 +146,6 @@
 				847B184B22F85DB1002ED634 /* funcs.el */,
 			);
 			path = "zilongshanren-ui";
-			sourceTree = "<group>";
-		};
-		847B184C22F85DB1002ED634 /* iTBoyer-og */ = {
-			isa = PBXGroup;
-			children = (
-				847B184D22F85DB1002ED634 /* packages.el */,
-				847B184E22F85DB1002ED634 /* config.el */,
-			);
-			path = "iTBoyer-og";
 			sourceTree = "<group>";
 		};
 		847B184F22F85DB1002ED634 /* zilongshanren */ = {
