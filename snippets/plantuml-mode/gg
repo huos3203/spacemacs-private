@@ -2,8 +2,8 @@
 # name: 甘特图
 # key: gg
 # --
-project starts `!v strftime("%Y-%m-%d")` 
+project starts %U
 Sunday are closed
 Saturday are closed
 --组名--
-[$1] as [$2] on \{${3:hsg:100%}\} lasts ${4:1} days
+[$1] as [$2] on {${3:hsg:100%}} lasts ${4:1} days

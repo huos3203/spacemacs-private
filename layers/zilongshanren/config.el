@@ -13,9 +13,9 @@
      deft-dir "f:/org-notes"
      blog-admin-dir "f:/zilongshanren.com")
   (setq
-   org-agenda-dir "~/hsg/hexo/iNotes"
-   deft-dir "~/hsg/hexo/iNotes"
-   blog-admin-dir "~/hsg/hexo/"))
+   org-agenda-dir "~/hsg/hugo/org-notes"
+   deft-dir "~/hsg/hugo/org-notes"
+   blog-admin-dir "~/hsg/hugo"))
 
 
 ;;load sensitive data

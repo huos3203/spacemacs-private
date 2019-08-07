@@ -400,9 +400,9 @@ See `org-capture-templates' for more information."
       (setq org-publish-project-alist
             `(
               ("blog-notes"
-               :base-directory "~/hsg/hexo/iNotes"
+               :base-directory "~/hsg/hugo/org-notes"
                :base-extension "org"
-               :publishing-directory "~/hsg/hexo/iNotes/public_html/"
+               :publishing-directory "~/hsg/hugo/org-notes/public_html/"
 
                :recursive t
                :html-head , zilongshanren-website-html-blog-head
@@ -422,9 +422,9 @@ See `org-capture-templates' for more information."
                :sitemap-file-entry-format "%t" ; %d to output date, we don't need date here
                )
               ("blog-static"
-               :base-directory "~/hsg/hexo/iNotes"
+               :base-directory "~/hsg/hugo/org-notes"
                :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
-               :publishing-directory "~/hsg/hexo/iNotes/public_html/"
+               :publishing-directory "~/hsg/hugo/org-notes/public_html/"
                :recursive t
                :publishing-function org-publish-attachment
                )
@@ -548,7 +548,7 @@ holding contextual information."
 (defun iTBoyer-org/init-plain-org-wiki ()
   (use-package plain-org-wiki
     :init
-    (setq pow-directory "~/hsg/hexo/iNotes")))
+    (setq pow-directory "~/hsg/hugo/org-notes")))
 
 (defun zilongshanren-org/init-ob-typescript ()
   (use-package ob-typescript

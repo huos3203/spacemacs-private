@@ -375,7 +375,7 @@ See `org-capture-templates' for more information."
       (defvar zilongshanren-website-html-preamble
         "<div class='nav'>
 <ul>
-<li><a href='http://zilongshanren.com'>博客</a></li>
+<li><a href='https://itboyer.gitee.io'>博客</a></li>
 <li><a href='/index.html'>Wiki目录</a></li>
 </ul>
 </div>")
@@ -385,9 +385,9 @@ See `org-capture-templates' for more information."
       (setq org-publish-project-alist
             `(
               ("blog-notes"
-               :base-directory "~/org-notes"
+               :base-directory "~/hsg/hugo/org-notes"
                :base-extension "org"
-               :publishing-directory "~/org-notes/public_html/"
+               :publishing-directory "~/hsg/hugo/org-notes/public_html/"
 
                :recursive t
                :html-head , zilongshanren-website-html-blog-head
@@ -398,8 +398,8 @@ See `org-capture-templates' for more information."
                :exclude-tags ("ol" "noexport")
                :section-numbers nil
                :html-preamble ,zilongshanren-website-html-preamble
-               :author "zilongshanren"
-               :email "guanghui8827@gmail.com"
+               :author "iTBoyer"
+               :email "iTBoyer@qq.com"
                :auto-sitemap t          ; Generate sitemap.org automagically...
                :sitemap-filename "index.org" ; ... call it sitemap.org (it's the default)...
                :sitemap-title "我的wiki"     ; ... with title 'Sitemap'.
@@ -407,9 +407,9 @@ See `org-capture-templates' for more information."
                :sitemap-file-entry-format "%t" ; %d to output date, we don't need date here
                )
               ("blog-static"
-               :base-directory "~/org-notes"
+               :base-directory "~/hsg/hugo/org-notes"
                :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
-               :publishing-directory "~/org-notes/public_html/"
+               :publishing-directory "~/hsg/hugo/org-notes/public_html/"
                :recursive t
                :publishing-function org-publish-attachment
                )
@@ -533,7 +533,7 @@ holding contextual information."
 (defun zilongshanren-org/init-plain-org-wiki ()
   (use-package plain-org-wiki
     :init
-    (setq pow-directory "~/org-notes")))
+    (setq pow-directory "~/hsg/hugo/org-notes")))
 
 (defun zilongshanren-org/init-ob-typescript ()
   (use-package ob-typescript
