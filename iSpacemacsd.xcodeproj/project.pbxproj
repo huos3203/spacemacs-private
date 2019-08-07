@@ -6,6 +6,20 @@
 	objectVersion = 50;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		84D9F28822FB015B00CB2B56 /* Install */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 84D9F28922FB015B00CB2B56 /* Build configuration list for PBXAggregateTarget "Install" */;
+			buildPhases = (
+				84D9F28C22FB02FB00CB2B56 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = Install;
+			productName = Install;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXFileReference section */
 		847B183322F85DB1002ED634 /* plantuml.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = plantuml.jar; sourceTree = "<group>"; };
 		847B183422F85DB1002ED634 /* game_win.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = game_win.wav; sourceTree = "<group>"; };
@@ -42,6 +56,7 @@
 		847B186922F85DB1002ED634 /* liberime.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = liberime.so; sourceTree = "<group>"; };
 		847B186A22F85DB1002ED634 /* init.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = init.el; sourceTree = "<group>"; };
 		847B186B22F85DB1002ED634 /* README.org */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.org; sourceTree = "<group>"; };
+		84D9F28722FB009800CB2B56 /* install.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = install.sh; sourceTree = "<group>"; };
 		84DDAB5C22F867F6006660D4 /* init-zl.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = "init-zl.el"; sourceTree = "<group>"; };
 		84DDAB5D22F86824006660D4 /* 安装说明.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "安装说明.md"; sourceTree = "<group>"; };
 		84DDB13122F9B1AD006660D4 /* markdown-mode */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "markdown-mode"; sourceTree = "<group>"; };
@@ -52,6 +67,7 @@
 		847B17EE22F85D37002ED634 = {
 			isa = PBXGroup;
 			children = (
+				84D9F28722FB009800CB2B56 /* install.sh */,
 				84DDAB5D22F86824006660D4 /* 安装说明.md */,
 				847B186522F85DB1002ED634 /* custom.el */,
 				847B183622F85DB1002ED634 /* ditaa.jar */,
@@ -205,6 +221,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 1030;
+				TargetAttributes = {
+					84D9F28822FB015B00CB2B56 = {
+						CreatedOnToolsVersion = 11.0;
+					};
+				};
 			};
 			buildConfigurationList = 847B17F222F85D37002ED634 /* Build configuration list for PBXProject "iSpacemacsd" */;
 			compatibilityVersion = "Xcode 9.3";
@@ -217,9 +238,30 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				84D9F28822FB015B00CB2B56 /* Install */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		84D9F28C22FB02FB00CB2B56 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "sh `pwd`/Util/iSpacemacsd/install.sh\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
 		847B17F322F85D37002ED634 /* Debug */ = {
@@ -234,6 +276,22 @@
 			};
 			name = Release;
 		};
+		84D9F28A22FB015B00CB2B56 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		84D9F28B22FB015B00CB2B56 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -242,6 +300,15 @@
 			buildConfigurations = (
 				847B17F322F85D37002ED634 /* Debug */,
 				847B17F422F85D37002ED634 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		84D9F28922FB015B00CB2B56 /* Build configuration list for PBXAggregateTarget "Install" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84D9F28A22FB015B00CB2B56 /* Debug */,
+				84D9F28B22FB015B00CB2B56 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
