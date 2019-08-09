@@ -94,8 +94,9 @@
       (setq org-agenda-window-setup 'current-window)
       (setq org-log-done t)
 
-      ;; 加密文章
+      ;; 使用gnupg加密你的org-mode
       ;; "http://coldnew.github.io/blog/2013/07/13_5b094.html"
+      ;; brew install gnupg
       ;; org-mode 設定
       (require 'org-crypt)
 
@@ -366,8 +367,8 @@ See `org-capture-templates' for more information."
               ("b" "Blog" tags-todo "BLOG")
               ("p" . "项目安排")
               ("pw" tags-todo "PROJECT+WORK+CATEGORY=\"work\"")
-              ("pl" tags-todo "PROJECT+DREAM+CATEGORY=\"zilongshanren\"")
-              ("W" "Weekly Review"
+              ("pl" tags-todo "PROJECT+DREAM+CATEGORY=\"boyer\"")
+              ("W" "周回顾"
                ((stuck "") ;; review stuck projects as designated by org-stuck-projects
                 (tags-todo "PROJECT") ;; review all projects (assuming you use todo keywords to designate projects)
                 ))))
