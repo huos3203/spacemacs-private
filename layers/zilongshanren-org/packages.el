@@ -118,7 +118,9 @@
 
       (setq org-todo-keywords
             (quote ((sequence "TODO(t)" "STARTED(s)" "|" "DONE(d!/!)")
-                    (sequence "WAITING(w@/!)" "SOMEDAY(S)" "|" "CANCELLED(c@/!)" "MEETING(m)" "PHONE(p)"))))
+                    (sequence "WAITING(w@/!)" "SOMEDAY(S)" "|" "CANCELLED(c@/!)" "MEETING(m)" "PHONE(p)")
+                    ;; (sequence "关注圈(G@/!)" "影响圈(Y)")
+                    )))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
       ;; Org clock
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -288,6 +290,7 @@
       (setq org-agenda-file-note (expand-file-name "notes.org" org-agenda-dir))
       (setq org-agenda-file-gtd (expand-file-name "gtd.org" org-agenda-dir))
       (setq org-agenda-file-journal (expand-file-name "journal.org" org-agenda-dir))
+      (setq org-agenda-file-gzh (expand-file-name "gzh.org" org-agenda-dir))
       (setq org-agenda-file-code-snippet (expand-file-name "snippet.org" org-agenda-dir))
       (setq org-default-notes-file (expand-file-name "gtd.org" org-agenda-dir))
       (setq org-agenda-file-blogposts (expand-file-name "all-posts.org" org-agenda-dir))
@@ -329,7 +332,18 @@
               ("j" "Journal Entry"
                entry (file+datetree org-agenda-file-journal)
                "* %?"
-               :empty-lines 1)))
+               :empty-lines 1)
+              
+              ("g" "关注圈" entry (file+headline org-agenda-file-gzh "我的关注圈")
+               "* TODO [#B] %?\n  %i\n %U"
+               :empty-lines 1)
+              ("y" "影响圈" entry (file+headline org-agenda-file-gzh "我的影响圈")
+               "* TODO [#B] %?\n  %i\n %U"
+               :empty-lines 1)
+              ("x" "宣言" entry (file+headline org-agenda-file-gzh "使命宣言")
+               "* TODO [#B] %?\n  %i\n %U"
+               :empty-lines 1)
+              ))
 
       (with-eval-after-load 'org-capture
         (defun org-hugo-new-subtree-post-capture-template ()
@@ -371,7 +385,11 @@ See `org-capture-templates' for more information."
               ("W" "周回顾"
                ((stuck "") ;; review stuck projects as designated by org-stuck-projects
                 (tags-todo "PROJECT") ;; review all projects (assuming you use todo keywords to designate projects)
-                ))))
+                ))
+              ("g" . "我的圈子")
+              ("gy" "关注圈" tags-todo "like")
+              ("gx" "影响圈" tags-todo "iDo")
+              ))
 
       (defvar zilongshanren-website-html-preamble
         "<div class='nav'>
