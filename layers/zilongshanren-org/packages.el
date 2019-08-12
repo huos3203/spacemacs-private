@@ -308,7 +308,16 @@
       ;;http://www.howardism.org/Technical/Emacs/journaling-org.html
       ;;add multi-file journal
       (setq org-capture-templates
-            '(("t" "自我管理:以原则为中心,位置矩阵ABC为导向,合理安排任务" entry (file+headline org-agenda-file-gtd "Workspace")
+            '(("g" "积极主动处理关注圈" entry (file+headline org-agenda-file-gzh "我的关注圈")
+               "* %^{heading} %^g\n %?\n"
+               :empty-lines 1)
+              ("y" "致力于扩大影响圈" entry (file+headline org-agenda-file-gzh "我的影响圈")
+               "* %^{heading} %^g\n %?\n"
+               :empty-lines 1)
+              ("x" "忠于使命宣言" entry (file+headline org-agenda-file-gzh "使命宣言")
+                "* %^{heading} %^g\n %?\n"
+                :empty-lines 1)
+              ("t" "自我管理:以原则为中心,位置矩阵ABC为导向,合理安排任务" entry (file+headline org-agenda-file-gtd "Workspace")
                "* TODO [#B] %^{title} %^g\nSCHEDULED: %^T DEADLINE: %^t\n\n  %?"
                 :clock-in t :clock-resume t :empty-lines 1)
               ("n" "总结笔记" entry (file+headline org-agenda-file-note "Quick notes")
@@ -321,7 +330,7 @@
                (file org-agenda-file-code-snippet)
                "* %?\t%^g\n#+BEGIN_SRC %^{language}\n\n#+END_SRC")
               ("w" "周工作安排" entry (file+headline org-agenda-file-gtd "Work")
-               "* TODO [#A] %?\n  %i\n %U"
+               "* TODO [#A]  %^g\n %?\n  %i\n %U"
                :empty-lines 1)
               ("c" "Chrome" entry (file+headline org-agenda-file-note "Quick notes")
                "* TODO [#C] %?\n %(zilongshanren/retrieve-chrome-current-tab-url)\n %i\n %U"
@@ -332,16 +341,6 @@
               ("j" "日志"
                entry (file+datetree org-agenda-file-journal)
                "* %U - %^{heading} %^g\n %?\n"
-               :empty-lines 1)
-              
-              ("g" "积极主动处理关注圈" table-line (file+headline org-agenda-file-gzh "我的关注圈")
-               "* %^{heading} %^g\n %?\n"
-               :empty-lines 1)
-              ("y" "致力于扩大影响圈" entry (file+headline org-agenda-file-gzh "我的影响圈")
-               "* %^{heading} %^g\n %?\n"
-               :empty-lines 1)
-              ("x" "忠于使命宣言" entry (file+headline org-agenda-file-gzh "使命宣言")
-               "* %^{heading} %^g\n %?\n"
                :empty-lines 1)
               ))
 
