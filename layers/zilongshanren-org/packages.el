@@ -308,19 +308,19 @@
       ;;http://www.howardism.org/Technical/Emacs/journaling-org.html
       ;;add multi-file journal
       (setq org-capture-templates
-            '(("t" "Todo" entry (file+headline org-agenda-file-gtd "Workspace")
-               "* TODO [#B] %?\n  %i\n %U"
-               :empty-lines 1)
-              ("n" "notes" entry (file+headline org-agenda-file-note "Quick notes")
+            '(("t" "自我管理:以原则为中心,位置矩阵ABC为导向,合理安排任务" entry (file+headline org-agenda-file-gtd "Workspace")
+               "* TODO [#B] %^{title} %^g\nSCHEDULED: %^T DEADLINE: %^t\n\n  %?"
+                :clock-in t :clock-resume t :empty-lines 1)
+              ("n" "总结笔记" entry (file+headline org-agenda-file-note "Quick notes")
                "* %?\n  %i\n %U"
                :empty-lines 1)
-              ("b" "Blog Ideas" entry (file+headline org-agenda-file-note "Blog Ideas")
-               "* TODO [#B] %?\n  %i\n %U"
+              ("b" "博客灵感" entry (file+headline org-agenda-file-note "Blog Ideas")
+               "* TODO  [#B] %^{title}\nSCHEDULED: %^T DEADLINE: %^t\n\n  %?"
                :empty-lines 1)
               ("s" "Code Snippet" entry
                (file org-agenda-file-code-snippet)
                "* %?\t%^g\n#+BEGIN_SRC %^{language}\n\n#+END_SRC")
-              ("w" "work" entry (file+headline org-agenda-file-gtd "Work")
+              ("w" "周工作安排" entry (file+headline org-agenda-file-gtd "Work")
                "* TODO [#A] %?\n  %i\n %U"
                :empty-lines 1)
               ("c" "Chrome" entry (file+headline org-agenda-file-note "Quick notes")
@@ -329,19 +329,19 @@
               ("l" "links" entry (file+headline org-agenda-file-note "Quick notes")
                "* TODO [#C] %?\n  %i\n %a \n %U"
                :empty-lines 1)
-              ("j" "Journal Entry"
+              ("j" "日志"
                entry (file+datetree org-agenda-file-journal)
-               "* %?"
+               "* %U - %^{heading} %^g\n %?\n"
                :empty-lines 1)
               
-              ("g" "关注圈" entry (file+headline org-agenda-file-gzh "我的关注圈")
-               "* TODO [#B] %?\n  %i\n %U"
+              ("g" "积极主动处理关注圈" table-line (file+headline org-agenda-file-gzh "我的关注圈")
+               "* %^{heading} %^g\n %?\n"
                :empty-lines 1)
-              ("y" "影响圈" entry (file+headline org-agenda-file-gzh "我的影响圈")
-               "* TODO [#B] %?\n  %i\n %U"
+              ("y" "致力于扩大影响圈" entry (file+headline org-agenda-file-gzh "我的影响圈")
+               "* %^{heading} %^g\n %?\n"
                :empty-lines 1)
-              ("x" "宣言" entry (file+headline org-agenda-file-gzh "使命宣言")
-               "* TODO [#B] %?\n  %i\n %U"
+              ("x" "忠于使命宣言" entry (file+headline org-agenda-file-gzh "使命宣言")
+               "* %^{heading} %^g\n %?\n"
                :empty-lines 1)
               ))
 
@@ -375,9 +375,9 @@ See `org-capture-templates' for more information."
       (setq org-agenda-custom-commands
             '(
               ("w" . "任务安排")
-              ("wa" "重要且紧急的任务" tags-todo "+PRIORITY=\"A\"")
-              ("wb" "重要且不紧急的任务" tags-todo "-Weekly-Monthly-Daily+PRIORITY=\"B\"")
-              ("wc" "不重要且紧急的任务" tags-todo "+PRIORITY=\"C\"")
+              ("wa" "A级任务" tags-todo "+PRIORITY=\"A\"")
+              ("wb" "B级任务" tags-todo "-Weekly-Monthly-Daily+PRIORITY=\"B\"")
+              ("wc" "C级任务" tags-todo "+PRIORITY=\"C\"")
               ("b" "Blog" tags-todo "BLOG")
               ("p" . "项目安排")
               ("pw" tags-todo "PROJECT+WORK+CATEGORY=\"work\"")
@@ -387,7 +387,7 @@ See `org-capture-templates' for more information."
                 (tags-todo "PROJECT") ;; review all projects (assuming you use todo keywords to designate projects)
                 ))
               ("g" . "我的圈子")
-              ("gy" "关注圈" tags-todo "like")
+              ("gy" "关注圈" tags-todo "follow")
               ("gx" "影响圈" tags-todo "iDo")
               ))
 
