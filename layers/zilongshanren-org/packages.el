@@ -107,19 +107,18 @@
       (setq org-crypt-tag-matcher "secret")
 
       ;; 避免 secret 這個 tag 被子項目繼承 造成重複加密
-      ;; (但是子項目還是會被加密喔)
-      (setq org-tags-exclude-from-inheritance (quote ("secret")))
+      ;; (但是子項目還是會被加密喔) 对TG标签禁用继承
+      (setq org-tags-exclude-from-inheritance (quote ("secret" "follow")))
 
       ;; 用於加密的 GPG 金鑰
       ;; 可以設定任何 ID 或是設成 nil 來使用對稱式加密 (symmetric encryption)
       (setq org-crypt-key nil)
 
       ;; (add-to-list 'auto-mode-alist '("\.org\\'" . org-mode))
-      ;; 设置任务的进程状态
+      ;; 定义任务状态关键词 https://www.cnblogs.com/quantumman/p/10808374.html
       (setq org-todo-keywords
-            (quote ((sequence "TODO(t)" "STARTED(s)" "|" "DONE(d!/!)")
+            (quote ((sequence "TODO(t)" "STARTED(s)" "MAYBE(m)" "WAIT(w)" "DELEGATED(D)" "|" "DONE(d!/!)")
                     (sequence "WAITING(w@/!)" "SOMEDAY(S)" "|" "CANCELLED(c@/!)" "MEETING(m)" "PHONE(p)")
-                    ;; (sequence "关注圈(G@/!)" "影响圈(Y)")
                     )))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
       ;; Org clock
@@ -296,6 +295,9 @@
       (setq org-agenda-file-blogposts (expand-file-name "all-posts.org" org-agenda-dir))
       (setq org-agenda-files (list org-agenda-dir))
 
+        ;;
+      (setq org-html-export-study (expand-file-name "Agenda-Study.html" org-html-exports-dir))
+
       ;; C-n for the next org agenda item
       (define-key org-agenda-mode-map (kbd "C-p") 'org-agenda-previous-item)
 
@@ -366,6 +368,9 @@ See `org-capture-templates' for more information."
 
       ;;An entry without a cookie is treated just like priority ' B '.
       ;;So when create new task, they are default 重要且紧急
+      ;; 自定义日程视图,该变量是一个列表，其中的每一项对应一个视图设置。
+      ;; 通过过滤用户指定的任务状态关键词、标签、时间戳以及自定义条件.
+      ;; 格式:(key desc type match settings files)
       (setq org-agenda-custom-commands
             '(
               ("w" . "任务安排")
@@ -380,8 +385,35 @@ See `org-capture-templates' for more information."
                ((stuck "") ;; review stuck projects as designated by org-stuck-projects
                 (tags-todo "PROJECT") ;; review all projects (assuming you use todo keywords to designate projects)
                 ))
-              ("y" "影响圈" tags-todo "iDo")
-              ))
+              ("y" "影响圈" tags "iDo")
+
+            ("A" . "默认日程视图")
+            ("Aa" "查看所有的todo事件"
+             agenda ""
+             ((org-agenda-skip-function 'tjh/org-agenda-skip-only-timestamp-entries)
+             (org-agenda-overriding-header "Agenda for all projects: "))
+              org-html-export-study
+            )
+            ("D" . "Agenda view for deadlines")
+            ("Da" "列出所有加了DEADLINE时间戳的任务"
+             agenda ""
+             ((org-agenda-skip-function 'tjh/org-agenda-skip-not-deadline-entries)
+             (org-agenda-overriding-header "All deadlines: "))
+            )
+            ("F" . "Agenda view for finished tasks")
+            ("Fa" "列出总的和各个项目的已完成任务视图"
+            agenda ""
+            ((org-agenda-skip-function 'tjh/org-agenda-skip-unfinished-entries)
+            (org-agenda-overriding-header "All finished tasks: "))
+            )
+            ;; Inbox for displaying unscheduled tasks.
+            ("I" . "收集箱")
+            ("Ia" "列出所有尚未计划的任务条目，则可以构成GTD流程中的收集箱"
+            alltodo ""
+            ((org-agenda-skip-function 'tjh/org-agenda-skip-scheduled-entries)
+            (org-agenda-overriding-header "Inbox items: "))
+            )
+        ))
 
       (defvar zilongshanren-website-html-preamble
         "<div class='nav'>
@@ -567,4 +599,34 @@ holding contextual information."
   (use-package sound-wav
     :defer t
     :init))
+
+
+;;默认日程视图
+;; Skip entries which only have timestamp but no TODO keywords.
+;;  默认日程视图:查看所有的todo事件,排除那些仅包含时间戳但没有TODO关键词的条目
+(defun tjh/org-agenda-skip-only-timestamp-entries ()
+(org-agenda-skip-entry-if 'nottodo 'any))
+
+;; 截止日期日程视图
+;; Skip entries which are not deadlines.
+;; 忽略不包含DEADLINE时间戳的条目
+(defun tjh/org-agenda-skip-not-deadline-entries ()
+(org-agenda-skip-entry-if 'notdeadline))
+
+;;已完成任务日程视图
+;; Skip entries which are not finished.
+;; 忽略所有不包含DONE状态关键词的任务条目
+(defun tjh/org-agenda-skip-unfinished-entries ()
+    (org-agenda-skip-entry-if 'nottodo '("DONE")))
+
+;;收集箱
+;; Skip unscheduled entries.
+;; 忽略所有已经加了时间戳、状态关键词为ONGOING、WAIT或DELEGATED的任务条目。
+;; 同时，包含了TG标签的任务也被排除在外。这是因为任务组只是具体任务的容器，故不参与到实际任务的安排中。
+(defun tjh/org-agenda-skip-scheduled-entries ()
+(org-agenda-skip-entry-if 'timestamp
+            'todo '("ONGOING" "WAIT" "DELEGATED")
+            'regexp ":follow:"))
+
+
 ;;; packages.el ends here

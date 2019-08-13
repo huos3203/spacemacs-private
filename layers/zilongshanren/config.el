@@ -14,6 +14,7 @@
      blog-admin-dir "f:/zilongshanren.com")
   (setq
    org-agenda-dir "~/hsg/hugo/org-notes"
+   org-html-exports-dir "~/hsg/hugo/org-notes/exports"
    deft-dir "~/hsg/hugo/org-notes"
    blog-admin-dir "~/hsg/hugo"))
 
