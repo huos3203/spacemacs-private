@@ -115,7 +115,7 @@
       (setq org-crypt-key nil)
 
       ;; (add-to-list 'auto-mode-alist '("\.org\\'" . org-mode))
-
+      ;; 设置任务的进程状态
       (setq org-todo-keywords
             (quote ((sequence "TODO(t)" "STARTED(s)" "|" "DONE(d!/!)")
                     (sequence "WAITING(w@/!)" "SOMEDAY(S)" "|" "CANCELLED(c@/!)" "MEETING(m)" "PHONE(p)")
@@ -308,17 +308,12 @@
       ;;http://www.howardism.org/Technical/Emacs/journaling-org.html
       ;;add multi-file journal
       (setq org-capture-templates
-            '(("g" "积极主动处理关注圈" entry (file+headline org-agenda-file-gzh "我的关注圈")
-               "* %^{heading} %^g\n %?\n"
+            '(
+              ("y" "做出承诺，信守承诺，致力于扩大影响圈" entry (file+headline org-agenda-file-gzh "我的影响圈")
+               "* %^{影响圈} %^g\n %^{角色}p %^{意愿}p\n\n %?"
                :empty-lines 1)
-              ("y" "致力于扩大影响圈" entry (file+headline org-agenda-file-gzh "我的影响圈")
-               "* %^{heading} %^g\n %?\n"
-               :empty-lines 1)
-              ("x" "忠于使命宣言" entry (file+headline org-agenda-file-gzh "使命宣言")
-                "* %^{heading} %^g\n %?\n"
-                :empty-lines 1)
-              ("t" "自我管理:以原则为中心,位置矩阵ABC为导向,合理安排任务" entry (file+headline org-agenda-file-gtd "Workspace")
-               "* TODO [#B] %^{title} %^g\nSCHEDULED: %^T DEADLINE: %^t\n\n  %?"
+              ("t" "自我管理：基于以终为始的自我领导勇于承诺信守承诺的原则,以位置矩阵ABC为导向,合理安排任务" entry (file+headline org-agenda-file-gtd "Workspace")
+               "* TODO [#B] %^{title} %^g\nSCHEDULED: %^T DEADLINE: %^t\n %^{知识}p %^{技巧}p %^{意愿}\n\n  %?"
                 :clock-in t :clock-resume t :empty-lines 1)
               ("n" "总结笔记" entry (file+headline org-agenda-file-note "Quick notes")
                "* %?\n  %i\n %U"
@@ -385,9 +380,7 @@ See `org-capture-templates' for more information."
                ((stuck "") ;; review stuck projects as designated by org-stuck-projects
                 (tags-todo "PROJECT") ;; review all projects (assuming you use todo keywords to designate projects)
                 ))
-              ("g" . "我的圈子")
-              ("gy" "关注圈" tags-todo "follow")
-              ("gx" "影响圈" tags-todo "iDo")
+              ("y" "影响圈" tags-todo "iDo")
               ))
 
       (defvar zilongshanren-website-html-preamble
