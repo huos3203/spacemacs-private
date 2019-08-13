@@ -311,38 +311,43 @@
       ;;add multi-file journal
       (setq org-capture-templates
             '(
-              ("y" "做出承诺，信守承诺，致力于扩大影响圈" entry (file+headline org-agenda-file-gzh "我的影响圈")
-               "* %^{影响圈} %^g\n %^{角色}p %^{意愿}p\n\n %?"
-               :empty-lines 1)
-              ("i" "我的习惯")
-              ("id" "每天" entry (file+headline org-agenda-file-gtd "我的习惯")
+              ("y" "我的习惯")
+              ("yd" "每天" entry (file+headline org-agenda-file-gtd "我的习惯")
                "* TODO %?\nSCHEDULED: <%<%Y-%m-%d %a .+1d>>\n:PROPERTIES:\n:CREATED: %U\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:LOGGING: DONE(!)\n:ARCHIVE: %%s_archive::* Habits\n:END:\n%U\n")
-              ("iw" "每周" entry (file+headline org-agenda-file-gtd "我的习惯")
+              ("yw" "每周" entry (file+headline org-agenda-file-gtd "我的习惯")
                "* TODO %?\nSCHEDULED: <%<%Y-%m-%d %a .+1w>>\n:PROPERTIES:\n:CREATED: %U\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:LOGGING: DONE(!)\n:ARCHIVE: %%s_archive::* Habits\n:END:\n%U\n")
+              ("yy" "做出承诺，信守承诺，致力于扩大影响圈" entry (file+headline org-agenda-file-gzh "我的影响圈")
+                "* %^{影响圈} %^g\n %^{角色}p %^{意愿}p\n\n %?"
+                :empty-lines 1)
+
+              ;;录入任务
               ("t" "自我管理：基于以终为始的自我领导勇于承诺信守承诺的原则,以位置矩阵ABC为导向,合理安排任务" entry (file+headline org-agenda-file-gtd "Workspace")
-               "* TODO [#B] %^{title} %^g\nSCHEDULED: %^T DEADLINE: %^t\n %^{知识}p %^{技巧}p %^{意愿}\n\n  %?"
-                :clock-in t :clock-resume t :empty-lines 1)
-              ("n" "总结笔记" entry (file+headline org-agenda-file-note "Quick notes")
-               "* %?\n  %i\n %U"
+                 "* TODO [#B] %^{title} %^g\n %^{知识}p %^{技巧}p %^{意愿}\n %?\n %U"
+                 :empty-lines 1)
+
+              ;;速记当前想法
+              ("n" "速记当前想法" entry (file+headline org-agenda-file-note "Quick notes")
+                "* %^{title} %^{title} %^g\n %?\n %U"
                :empty-lines 1)
-              ("b" "博客灵感" entry (file+headline org-agenda-file-note "Blog Ideas")
-               "* TODO  [#B] %^{title}\nSCHEDULED: %^T DEADLINE: %^t\n\n  %?"
-               :empty-lines 1)
+              ("w" "周工作安排" entry (file+headline org-agenda-file-gtd "Work")
+                "* TODO [#A] %^{title}  %^g:work:\n %?\n  %i\n %U"
+                :empty-lines 1)
+
+              ;; 抒情杂文
+              ("j" "抒情杂文,诗集"
+                entry (file+datetree org-agenda-file-journal)
+                "* %U - %^{title} %^g\n %?\n"
+                :empty-lines 1)
+
+              ;;其他
               ("s" "Code Snippet" entry
                (file org-agenda-file-code-snippet)
                "* %?\t%^g\n#+BEGIN_SRC %^{language}\n\n#+END_SRC")
-              ("w" "周工作安排" entry (file+headline org-agenda-file-gtd "Work")
-               "* TODO [#A]  %^g\n %?\n  %i\n %U"
-               :empty-lines 1)
               ("c" "Chrome" entry (file+headline org-agenda-file-note "Quick notes")
                "* TODO [#C] %?\n %(zilongshanren/retrieve-chrome-current-tab-url)\n %i\n %U"
                :empty-lines 1)
               ("l" "links" entry (file+headline org-agenda-file-note "Quick notes")
                "* TODO [#C] %?\n  %i\n %a \n %U"
-               :empty-lines 1)
-              ("j" "日志"
-               entry (file+datetree org-agenda-file-journal)
-               "* %U - %^{heading} %^g\n %?\n"
                :empty-lines 1)
               ))
 
@@ -354,7 +359,7 @@ See `org-capture-templates' for more information."
                  (fname (org-hugo-slug title)))
             (mapconcat #'identity
                        `(
-                         ,(concat "* TODO " title)
+                         ,(concat "* TODO " title " :BLOG:")
                          ":PROPERTIES:"
                          ,(concat ":EXPORT_FILE_NAME: " fname)
                          ":END:"
@@ -382,7 +387,6 @@ See `org-capture-templates' for more information."
               ("wa" "A级任务" tags-todo "+PRIORITY=\"A\"")
               ("wb" "B级任务" tags-todo "-Weekly-Monthly-Daily+PRIORITY=\"B\"")
               ("wc" "C级任务" tags-todo "+PRIORITY=\"C\"")
-              ("b" "Blog" tags-todo "BLOG")
               ("p" . "项目安排")
               ("pw" tags-todo "PROJECT+WORK+CATEGORY=\"work\"")
               ("pl" tags-todo "PROJECT+DREAM+CATEGORY=\"boyer\"")
