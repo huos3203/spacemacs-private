@@ -314,6 +314,11 @@
               ("y" "做出承诺，信守承诺，致力于扩大影响圈" entry (file+headline org-agenda-file-gzh "我的影响圈")
                "* %^{影响圈} %^g\n %^{角色}p %^{意愿}p\n\n %?"
                :empty-lines 1)
+              ("i" "我的习惯")
+              ("id" "每天" entry (file+headline org-agenda-file-gtd "我的习惯")
+               "* TODO %?\nSCHEDULED: <%<%Y-%m-%d %a .+1d>>\n:PROPERTIES:\n:CREATED: %U\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:LOGGING: DONE(!)\n:ARCHIVE: %%s_archive::* Habits\n:END:\n%U\n")
+              ("iw" "每周" entry (file+headline org-agenda-file-gtd "我的习惯")
+               "* TODO %?\nSCHEDULED: <%<%Y-%m-%d %a .+1w>>\n:PROPERTIES:\n:CREATED: %U\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:LOGGING: DONE(!)\n:ARCHIVE: %%s_archive::* Habits\n:END:\n%U\n")
               ("t" "自我管理：基于以终为始的自我领导勇于承诺信守承诺的原则,以位置矩阵ABC为导向,合理安排任务" entry (file+headline org-agenda-file-gtd "Workspace")
                "* TODO [#B] %^{title} %^g\nSCHEDULED: %^T DEADLINE: %^t\n %^{知识}p %^{技巧}p %^{意愿}\n\n  %?"
                 :clock-in t :clock-resume t :empty-lines 1)
@@ -388,30 +393,29 @@ See `org-capture-templates' for more information."
               ("y" "影响圈" tags "iDo")
 
             ("A" . "默认日程视图")
-            ("Aa" "查看所有的todo事件"
+            ("Aa" "已安排todo事件:"
              agenda ""
              ((org-agenda-skip-function 'tjh/org-agenda-skip-only-timestamp-entries)
-             (org-agenda-overriding-header "Agenda for all projects: "))
-              org-html-export-study
+             (org-agenda-overriding-header "所有org中已安排todo事件: "))
             )
             ("D" . "Agenda view for deadlines")
             ("Da" "列出所有加了DEADLINE时间戳的任务"
              agenda ""
              ((org-agenda-skip-function 'tjh/org-agenda-skip-not-deadline-entries)
-             (org-agenda-overriding-header "All deadlines: "))
+             (org-agenda-overriding-header "所有org中,已设置截止日期的任务清单: "))
             )
             ("F" . "Agenda view for finished tasks")
             ("Fa" "列出总的和各个项目的已完成任务视图"
             agenda ""
             ((org-agenda-skip-function 'tjh/org-agenda-skip-unfinished-entries)
-            (org-agenda-overriding-header "All finished tasks: "))
+            (org-agenda-overriding-header "所有org中,已完成的任务清单: "))
             )
             ;; Inbox for displaying unscheduled tasks.
             ("I" . "收集箱")
             ("Ia" "列出所有尚未计划的任务条目，则可以构成GTD流程中的收集箱"
             alltodo ""
             ((org-agenda-skip-function 'tjh/org-agenda-skip-scheduled-entries)
-            (org-agenda-overriding-header "Inbox items: "))
+            (org-agenda-overriding-header "所有尚未计划的任务清单: "))
             )
         ))
 
@@ -603,7 +607,7 @@ holding contextual information."
 
 ;;默认日程视图
 ;; Skip entries which only have timestamp but no TODO keywords.
-;;  默认日程视图:查看所有的todo事件,排除那些仅包含时间戳但没有TODO关键词的条目
+;;  默认日程视图:查看已安排todo事件,排除那些仅包含时间戳但没有TODO关键词的条目
 (defun tjh/org-agenda-skip-only-timestamp-entries ()
 (org-agenda-skip-entry-if 'nottodo 'any))
 
