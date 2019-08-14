@@ -107,8 +107,8 @@
       (setq org-crypt-tag-matcher "secret")
 
       ;; 避免 secret 這個 tag 被子項目繼承 造成重複加密
-      ;; (但是子項目還是會被加密喔) 对TG标签禁用继承
-      (setq org-tags-exclude-from-inheritance (quote ("secret" "follow")))
+      ;; (但是子項目還是會被加密喔) 对TG(任务组task group)标签禁用继承
+      (setq org-tags-exclude-from-inheritance (quote ("secret" "TG")))
 
       ;; 用於加密的 GPG 金鑰
       ;; 可以設定任何 ID 或是設成 nil 來使用對稱式加密 (symmetric encryption)
@@ -293,6 +293,7 @@
       (setq org-agenda-file-code-snippet (expand-file-name "snippet.org" org-agenda-dir))
       (setq org-default-notes-file (expand-file-name "gtd.org" org-agenda-dir))
       (setq org-agenda-file-blogposts (expand-file-name "all-posts.org" org-agenda-dir))
+      (setq org-agenda-file-passwords (expand-file-name "passwords.org" org-agenda-dir))
       (setq org-agenda-files (list org-agenda-dir))
 
         ;;
@@ -321,21 +322,30 @@
                 :empty-lines 1)
 
               ;;录入任务
-              ("t" "自我管理：基于以终为始的自我领导勇于承诺信守承诺的原则,以位置矩阵ABC为导向,合理安排任务" entry (file+headline org-agenda-file-gtd "Workspace")
-                 "* TODO [#B] %^{title} %^g\n %^{知识}p %^{技巧}p %^{意愿}\n %?\n %U"
+              ("t" "自我管理：基于以终为始的自我领导勇于承诺信守承诺的原则,以位置矩阵ABC为导向,合理安排任务")
+              ("tt" "普通任务" entry (file+headline org-agenda-file-gtd "Workspace")
+                 "* TODO [#B] %^{title} %^g\n %^{知识}p %^{技巧}p %^{意愿}p\n %?\n %U"
                  :empty-lines 1)
-
-              ;;速记当前想法
-              ("n" "速记当前想法" entry (file+headline org-agenda-file-note "Quick notes")
-                "* %^{title} %^{title} %^g\n %?\n %U"
-               :empty-lines 1)
-              ("w" "周工作安排" entry (file+headline org-agenda-file-gtd "Work")
+              ("tb" "Book Reading Task" entry
+                (file+olp org-agenda-file-gtd "Reading" "Book")
+                  "* TODO %^{书名}\n%u\n%a\n"
+                  :clock-in t :clock-resume t)
+              ("tw" "周工作安排" entry
+                (file+headline org-agenda-file-gtd "Work")
                 "* TODO [#A] %^{title}  %^g:work:\n %?\n  %i\n %U"
                 :empty-lines 1)
 
-              ;; 抒情杂文
+              ;;速记当前想法
+              ("n" "速记当前想法" entry (file+headline org-agenda-file-note "Quick notes")
+                "* %^{title} %^g\n %?\n %U"
+               :empty-lines 1)
+              ;;记录从网页上收集的资源、文章
+              ("w" "Web Collections" entry
+                (file+headline org-agenda-file-note "Web")
+                "* %U %:annotation\n\n%:initial\n\n%?")
+              ;;用来做日志记录、日记写作一类的事情，新增的内容和过去的内容都按时间顺序排列，方便我们进行回顾
               ("j" "抒情杂文,诗集"
-                entry (file+datetree org-agenda-file-journal)
+                entry (file+weektree org-agenda-file-journal)
                 "* %U - %^{title} %^g\n %?\n"
                 :empty-lines 1)
 
@@ -349,6 +359,9 @@
               ("l" "links" entry (file+headline org-agenda-file-note "Quick notes")
                "* TODO [#C] %?\n  %i\n %a \n %U"
                :empty-lines 1)
+              ("p" "Passwords" entry (file org-agenda-file-passwords)
+                "* %U - %^{title} %^G:secret:\n\n  - 用户名: %^{用户名}\n  - 密码: %(get-or-create-password)"
+                :empty-lines 1 :kill-buffer t)
               ))
 
       (with-eval-after-load 'org-capture
@@ -634,7 +647,22 @@ holding contextual information."
 (defun tjh/org-agenda-skip-scheduled-entries ()
 (org-agenda-skip-entry-if 'timestamp
             'todo '("ONGOING" "WAIT" "DELEGATED")
-            'regexp ":follow:"))
+            'regexp ":TG:"))
 
+;;用 org-capture 来管理密码
+(defun random-alphanum ()
+    (let* ((charset "abcdefghijklmnopqrstuvwxyz0123456789")
+        (x (random 36)))
+     (char-to-string (elt charset x))))
 
+(defun create-password ()
+    (let ((value ""))
+      (dotimes (number 16 value)
+       (setq value (concat value (random-alphanum))))))
+
+(defun get-or-create-password ()
+   (setq password (read-string "Password: "))
+   (if (string= password "")
+        (create-password)
+    password))
 ;;; packages.el ends here
