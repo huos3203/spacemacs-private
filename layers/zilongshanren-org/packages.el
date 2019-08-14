@@ -356,7 +356,7 @@
               ("c" "Chrome" entry (file+headline org-agenda-file-note "Quick notes")
                "* TODO [#C] %?\n %(zilongshanren/retrieve-chrome-current-tab-url)\n %i\n %U"
                :empty-lines 1)
-              ("l" "links" entry (file+headline org-agenda-file-note "Quick notes")
+              ("l" "新建任务中引用当前任务" entry (file+headline org-agenda-file-note "Quick notes")
                "* TODO [#C] %?\n  %i\n %a \n %U"
                :empty-lines 1)
               ("p" "Passwords" entry (file org-agenda-file-passwords)
@@ -665,4 +665,8 @@ holding contextual information."
    (if (string= password "")
         (create-password)
     password))
+
+;;以Emacs Org mode为核心的任务管理方案  https://www.cnblogs.com/quantumman/p/10808174.html
+;;将Emacs Org mode用于GTD任务管理  https://www.cnblogs.com/quantumman/p/10808374.html
+;;强大的 Org mode(4): 使用 capture 功能快速记录 http://ju.outofmemory.cn/entry/348743
 ;;; packages.el ends here
