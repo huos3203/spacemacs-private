@@ -117,8 +117,7 @@
       ;; (add-to-list 'auto-mode-alist '("\.org\\'" . org-mode))
       ;; 定义任务状态关键词 https://www.cnblogs.com/quantumman/p/10808374.html
       (setq org-todo-keywords
-            (quote ((sequence "TODO(t)" "STARTED(s)" "MAYBE(m)" "WAIT(w)" "DELEGATED(D)" "|" "DONE(d!/!)")
-                    (sequence "WAITING(w@/!)" "SOMEDAY(S)" "|" "CANCELLED(c@/!)" "MEETING(m)" "PHONE(p)")
+            (quote ((sequence "TODO(t)" "STARTED(s)" "MAYBE(m)" "WAITING(w@/!)" "SOMEDAY(S)" "DELEGATED(d)" "|" "DONE(D!/!)" "CANCELLED(c@/!)" "MEETING(M)" "PHONE(p)")
                     )))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
       ;; Org clock
@@ -334,20 +333,20 @@
                 (file+headline org-agenda-file-gtd "Work")
                 "* TODO [#A] %^{title}  %^g:work:\n %?\n  %i\n %U"
                 :empty-lines 1)
-
-              ;;速记当前想法
-              ("n" "速记当前想法" entry (file+headline org-agenda-file-note "Quick notes")
-                "* %^{title} %^g\n %?\n %U"
-               :empty-lines 1)
-              ;;记录从网页上收集的资源、文章
-              ("w" "Web Collections" entry
-                (file+headline org-agenda-file-note "Web")
-                "* %U %:annotation\n\n%:initial\n\n%?")
+              ;;新建任务中引用当前任务
+              ("tl" "新建任务中引用当前任务" entry (file+headline org-agenda-file-note "Quick notes")
+                "* TODO [#C] %?\n  %i\n %a \n %U"
+                :empty-lines 1)
               ;;用来做日志记录、日记写作一类的事情，新增的内容和过去的内容都按时间顺序排列，方便我们进行回顾
-              ("j" "抒情杂文,诗集"
+              ("j" "做日志记录、日记写作,file+weektree顺序排列"
                 entry (file+weektree org-agenda-file-journal)
                 "* %U - %^{title} %^g\n %?\n"
                 :empty-lines 1)
+
+              ;;记录从网页上收集的资源、文章
+              ("w" "记录从网页上收集的资源、文章" entry
+                (file+headline org-agenda-file-note "Web")
+                "* %U %:annotation\n\n%:initial\n\n%?")
 
               ;;其他
               ("s" "Code Snippet" entry
@@ -356,9 +355,7 @@
               ("c" "Chrome" entry (file+headline org-agenda-file-note "Quick notes")
                "* TODO [#C] %?\n %(zilongshanren/retrieve-chrome-current-tab-url)\n %i\n %U"
                :empty-lines 1)
-              ("l" "新建任务中引用当前任务" entry (file+headline org-agenda-file-note "Quick notes")
-               "* TODO [#C] %?\n  %i\n %a \n %U"
-               :empty-lines 1)
+              ;;密码管理
               ("p" "Passwords" entry (file org-agenda-file-passwords)
                 "* %U - %^{title} %^G:secret:\n\n  - 用户名: %^{用户名}\n  - 密码: %(get-or-create-password)"
                 :empty-lines 1 :kill-buffer t)
@@ -409,20 +406,20 @@ See `org-capture-templates' for more information."
                 ))
               ("y" "影响圈" tags "iDo")
 
-            ("A" . "默认日程视图")
+            ("A" . "已安排的todo清单")
             ("Aa" "已安排todo事件:"
              agenda ""
              ((org-agenda-skip-function 'tjh/org-agenda-skip-only-timestamp-entries)
              (org-agenda-overriding-header "所有org中已安排todo事件: "))
             )
-            ("D" . "Agenda view for deadlines")
+            ("D" . "所有截止时间戳清单")
             ("Da" "列出所有加了DEADLINE时间戳的任务"
              agenda ""
              ((org-agenda-skip-function 'tjh/org-agenda-skip-not-deadline-entries)
              (org-agenda-overriding-header "所有org中,已设置截止日期的任务清单: "))
             )
-            ("F" . "Agenda view for finished tasks")
-            ("Fa" "列出总的和各个项目的已完成任务视图"
+            ("F" . "已完成的Done清单")
+            ("Fa" "列出总的和各个项目的已完成的任务"
             agenda ""
             ((org-agenda-skip-function 'tjh/org-agenda-skip-unfinished-entries)
             (org-agenda-overriding-header "所有org中,已完成的任务清单: "))
@@ -624,7 +621,8 @@ holding contextual information."
 
 ;;默认日程视图
 ;; Skip entries which only have timestamp but no TODO keywords.
-;;  默认日程视图:查看已安排todo事件,排除那些仅包含时间戳但没有TODO关键词的条目
+;; 默认日程视图:查看已安排todo事件,排除仅包含时间戳但没有TODO关键词的条目
+;; 已安排日程的todo事件
 (defun tjh/org-agenda-skip-only-timestamp-entries ()
 (org-agenda-skip-entry-if 'nottodo 'any))
 

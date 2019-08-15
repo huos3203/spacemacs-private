@@ -185,6 +185,8 @@
 (spacemacs/set-leader-keys "hh" 'zilongshanren/highlight-dwim)
 (spacemacs/set-leader-keys "hc" 'zilongshanren/clearn-highlight)
 
+(spacemacs/set-leader-keys "hx" 'zilong/org-clock-sum-today-by-tags)
+;;window系统
 (when (spacemacs/system-is-mswindows)
   (global-set-key (kbd "s-=") 'spacemacs/scale-up-font)
   (spacemacs/set-leader-keys "bf" 'locate-current-file-in-explorer)

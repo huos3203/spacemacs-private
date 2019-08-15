@@ -128,6 +128,7 @@
   (let (org-log-done org-log-states)    ; turn off logging
     (org-todo (if (= n-not-done 0) "DONE" "TODO"))))
 
+;;在Day Agenda中，按R(大写)可打开Clockreport，查看当日计时统计
 (defun zilong/filter-by-tags ()
   (let ((head-tags (org-get-tags-at)))
     (member current-tag head-tags)))
