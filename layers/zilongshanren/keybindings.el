@@ -186,6 +186,12 @@
 (spacemacs/set-leader-keys "hc" 'zilongshanren/clearn-highlight)
 
 (spacemacs/set-leader-keys "hx" 'zilong/org-clock-sum-today-by-tags)
+
+;; key modification for OS X
+(when (string-equal system-type "darwin")
+    (setq mac-command-modifier 'control)  ; use command as control
+    (setq mac-control-modifier 'super))   ; use control as super
+
 ;;window系统
 (when (spacemacs/system-is-mswindows)
   (global-set-key (kbd "s-=") 'spacemacs/scale-up-font)

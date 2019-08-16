@@ -81,6 +81,7 @@
 
       (setq org-refile-use-outline-path 'file)
       (setq org-outline-path-complete-in-steps nil)
+      ;;C-c C-w 调用refile移动节点
       (setq org-refile-targets
             '((nil :maxlevel . 4)
               (org-agenda-files :maxlevel . 4)))
@@ -117,7 +118,7 @@
       ;; (add-to-list 'auto-mode-alist '("\.org\\'" . org-mode))
       ;; 定义任务状态关键词 https://www.cnblogs.com/quantumman/p/10808374.html
       (setq org-todo-keywords
-            (quote ((sequence "TODO(t)" "STARTED(s)" "MAYBE(m)" "WAITING(w@/!)" "SOMEDAY(S)" "DELEGATED(d)" "|" "DONE(D!/!)" "CANCELLED(c@/!)" "MEETING(M)" "PHONE(p)")
+            (quote ((sequence "TODO(t)" "NEXT(n)" "STARTED(s)" "MAYBE(m)" "WAITING(w@/!)" "SOMEDAY(S)" "DELEGATED(d)" "|" "DONE(D!/!)" "CANCELLED(c@/!)" "MEETING(M)" "PHONE(p)")
                     )))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
       ;; Org clock
@@ -293,6 +294,9 @@
       (setq org-default-notes-file (expand-file-name "gtd.org" org-agenda-dir))
       (setq org-agenda-file-blogposts (expand-file-name "all-posts.org" org-agenda-dir))
       (setq org-agenda-file-passwords (expand-file-name "passwords.org" org-agenda-dir))
+      (setq org-agenda-file-finished (expand-file-name "finished.org" org-agenda-dir))
+      (setq org-agenda-file-project (expand-file-name "project.org" org-agenda-dir))
+      (setq org-agenda-file-task (expand-file-name "task.org" org-agenda-dir))
       (setq org-agenda-files (list org-agenda-dir))
 
         ;;
