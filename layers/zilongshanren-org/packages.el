@@ -76,7 +76,7 @@
       (require 'org-compat)
       (require 'org)
       ;; (add-to-list 'org-modules "org-habit")
-      (add-to-list 'org-modules 'org-habit)
+      (add-to-list 'org-modules 'org-habit 'org-super-agenda)
       (require 'org-habit)
       (require 'org-super-agenda)
 
@@ -118,7 +118,7 @@
       ;; (add-to-list 'auto-mode-alist '("\.org\\'" . org-mode))
       ;; 定义任务状态关键词 https://www.cnblogs.com/quantumman/p/10808374.html
       (setq org-todo-keywords
-            (quote ((sequence "TODO(t)" "STARTED(s)" "MAYBE(m)" "WAITING(w@/!)" "SOMEDAY(S)" "DELEGATED(d)" "|" "DONE(D!/!)" "CANCELLED(c@/!)" "MEETING(M)" "PHONE(p)")
+            (quote ((sequence "TODO(t)" "TODAY(T)" "NEXT(n)" "STARTED(s)" "MAYBE(m)" "WAITING(w@/!)" "SOMEDAY(S)" "DELEGATED(d)" "|" "DONE(D!/!)" "CANCELLED(c@/!)" "MEETING(M)" "PHONE(p)")
                     )))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
       ;; Org clock
@@ -296,7 +296,7 @@
       (setq org-agenda-file-blogposts (expand-file-name "all-posts.org" org-agenda-dir))
       (setq org-agenda-file-passwords (expand-file-name "passwords.org" org-agenda-dir))
       (setq org-agenda-files (list org-agenda-dir))
-
+      
       ;;
       (setq org-html-export-study (expand-file-name "Agenda-Study.html" org-html-exports-dir))
 
@@ -306,8 +306,8 @@
       (with-eval-after-load 'org-agenda
         (define-key org-agenda-mode-map (kbd "P") 'org-pomodoro)
         (spacemacs/set-leader-keys-for-major-mode 'org-agenda-mode
-          "." 'spacemacs/org-agenda-transient-state/body)
-        )
+        "." 'spacemacs/org-agenda-transient-state/body)
+      )
       ;; the %i would copy the selected text into the template
       ;;http://www.howardism.org/Technical/Emacs/journaling-org.html
       ;;add multi-file journal
@@ -441,21 +441,31 @@ See `org-capture-templates' for more information."
                 (org-agenda-overriding-header "所有org中,已完成的任务清单: "))
                )
               ))
-      
-(add-to-list 'org-agenda-custom-commands
-    '("G" "周任务概览" todo ""
-      ((org-super-agenda-groups
-        '( (:name "本周任务"
-                  :todo "NEXT")
-           (:name "拖延任务"
-                 :todo "DELAYED")
-          (:discard (:anything))
-          (:name "In Progress"
-                 :todo "STARTED"))
-       ))))
+
+       (add-to-list 'org-agenda-custom-commands
+                    '("G" "周任务" todo ""
+                      ((org-super-agenda-groups
+                        '(
+                          ;; (:name "今天"
+                          ;;        :time-grid t
+                          ;;        :todo "TODAY")
+                          (:name "下一步"
+                                 :todo "NEXT")
+                          (:name "延迟"
+                                 :todo "DELAYED")
+                          (:name "Doing"
+                                 :todo "STARTED")
+                          (:name "项目安排"
+                                 :tag "proj")
+                          (:name "紧急且重要"
+                                 :priority "A")
+                          (:name "重要不紧急"
+                                 :priority "B")
+                          (:name "紧急不重要"
+                                 :priority "C"))))))
 
 
-      (defvar zilongshanren-website-html-preamble
+       (defvar zilongshanren-website-html-preamble
         "<div class='nav'>
 <ul>
 <li><a href='https://itboyer.gitee.io'>博客</a></li>

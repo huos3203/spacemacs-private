@@ -112,6 +112,7 @@ values."
      version-control
      ;;iTBoyers
      zilongshanren
+
      ;;(chinese :variables chinese-default-input-method 'pinyin
      ;;              chinese-enable-youdao-dict t)
      )
