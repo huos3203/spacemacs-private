@@ -296,7 +296,24 @@
       (setq org-agenda-file-blogposts (expand-file-name "all-posts.org" org-agenda-dir))
       (setq org-agenda-file-passwords (expand-file-name "passwords.org" org-agenda-dir))
       (setq org-agenda-files (list org-agenda-dir))
+
+      (setq org-super-agenda-gtd '((:name "下一步"
+                                          :todo "NEXT")
+                                   (:name "延迟"
+                                          :todo "DELAYED")
+                                   (:name "Doing"
+                                          :todo "STARTED")))
       
+      (setq org-super-agenda-proj '((:name "项目安排"
+                                           :tag "proj")
+                                    (:name "紧急且重要"
+                                           :priority "A")
+                                    (:name "重要不紧急"
+                                           :priority "B")
+                                    (:name "紧急不重要"
+                                           :priority "C")
+                                    (:name "我的习惯"
+                                           :tag "habit")))
       ;;
       (setq org-html-export-study (expand-file-name "Agenda-Study.html" org-html-exports-dir))
 
@@ -306,8 +323,8 @@
       (with-eval-after-load 'org-agenda
         (define-key org-agenda-mode-map (kbd "P") 'org-pomodoro)
         (spacemacs/set-leader-keys-for-major-mode 'org-agenda-mode
-        "." 'spacemacs/org-agenda-transient-state/body)
-      )
+          "." 'spacemacs/org-agenda-transient-state/body)
+        )
       ;; the %i would copy the selected text into the template
       ;;http://www.howardism.org/Technical/Emacs/journaling-org.html
       ;;add multi-file journal
@@ -440,47 +457,30 @@ See `org-capture-templates' for more information."
                ((org-agenda-skip-function 'tjh/org-agenda-skip-unfinished-entries)
                 (org-agenda-overriding-header "所有org中,已完成的任务清单: "))
                )
-              ))
+              ("g" . "任务清单")
+              ("gt" "将要做的事"
+               todo ""
+                ((org-super-agenda-groups org-super-agenda-proj)
+                ;; (org-agenda-overriding-header "你好")
+                )
+               )
+              ("gp" "自我管理：基于以终为始的自我领导勇于承诺信守承诺的原则"
+               todo ""
+               ((org-super-agenda-groups org-super-agenda-gtd)
+                ;; (org-agenda-overriding-header "任务列表")
+                )
+               )))
 
-       (add-to-list 'org-agenda-custom-commands
-                    '("gd" "整理任务"
-                      todo "" ((org-super-agenda-groups
-                                '(
-                                  (:name "项目安排"
-                                         :tag "proj")
-                                  (:name "紧急且重要"
-                                         :priority "A")
-                                  (:name "重要不紧急"
-                                         :priority "B")
-                                  (:name "紧急不重要"
-                                         :priority "C")
-                                  (:name "我的习惯"
-                                         :tag "habit")
-                                  )
-                                ))))
-(add-to-list 'org-agenda-custom-commands
-                     '("gt" "周任务"
-                       todo ""  ((org-super-agenda-groups
-                                  '(
-                                    (:name "下一步"
-                                           :todo "NEXT")
-                                    (:name "延迟"
-                                           :todo "DELAYED")
-                                    (:name "Doing"
-                                           :todo "STARTED")
-                                    )))))
-
-
-       (defvar zilongshanren-website-html-preamble
+      (defvar zilongshanren-website-html-preamble
         "<div class='nav'>
-<ul>
-<li><a href='https://itboyer.gitee.io'>博客</a></li>
-<li><a href='/index.html'>Wiki目录</a></li>
-</ul>
-</div>")
+        <ul>
+        <li><a href='https://itboyer.gitee.io'>博客</a></li>
+        <li><a href='/index.html'>Wiki目录</a></li>
+        </ul>
+        </div>")
       (defvar zilongshanren-website-html-blog-head
         " <link rel='stylesheet' href='css/site.css' type='text/css'/> \n
-    <link rel=\"stylesheet\" type=\"text/css\" href=\"/css/worg.css\"/>")
+        <link rel=\"stylesheet\" type=\"text/css\" href=\"/css/worg.css\"/>")
       (setq org-publish-project-alist
             `(
               ("blog-notes"
@@ -527,8 +527,8 @@ See `org-capture-templates' for more information."
       ;; hack for org headline toc
       (defun org-html-headline (headline contents info)
         "Transcode a HEADLINE element from Org to HTML.
-CONTENTS holds the contents of the headline.  INFO is a plist
-holding contextual information."
+        CONTENTS holds the contents of the headline.  INFO is a plist
+        holding contextual information."
         (unless (org-element-property :footnote-section-p headline)
           (let* ((numberedp (org-export-numbered-headline-p headline info))
                  (numbers (org-export-get-headline-number headline info))
