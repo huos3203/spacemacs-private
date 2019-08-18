@@ -314,7 +314,7 @@
       (setq org-capture-templates
             '(
               ("N" "搜集" entry (file+headline org-agenda-file-inbox "inbox")
-               "* %^{title} %^g\n %U"
+               "* MAYBE %^{title} %^g\n %U"
                :empty-lines 1)
               ;;录入任务
               ("t" "组织，添加任务")
@@ -404,7 +404,7 @@ See `org-capture-templates' for more information."
                 (org-agenda-overriding-header "所有尚未计划的任务清单: "))
                ) 
               ("In" "自我管理：基于以终为始的自我领导勇于承诺信守承诺的原则,以位置矩阵ABC为导向,合理安排任务"
-               alltodo "" 
+               todo nil 
                ;; ((org-agenda-skip-function 'tjh/org-agenda-skip-only-untodo-entries)
                ;;  (org-agenda-overriding-header "展示搜集内容：")
                ;;  )
@@ -443,7 +443,7 @@ See `org-capture-templates' for more information."
               ))
 
        (add-to-list 'org-agenda-custom-commands
-                    '("GD" "整理任务"
+                    '("gd" "整理任务"
                       todo "" ((org-super-agenda-groups
                                 '(
                                   (:name "项目安排"
@@ -454,30 +454,14 @@ See `org-capture-templates' for more information."
                                          :priority "B")
                                   (:name "紧急不重要"
                                          :priority "C")
+                                  (:name "我的习惯"
+                                         :tag "habit")
                                   )
-                                ))
-                      
-                      )
-                      '("GT" "周任务"
-                       todo ""  ((org-super-agenda-groups
-                                  '(
-                                    (:name "今天"
-                                           ;; :time-grid t
-                                           :todo "TODAY")
-                                    (:name "下一步"
-                                           :todo "NEXT")
-                                    (:name "延迟"
-                                           :todo "DELAYED")
-                                    (:name "Doing"
-                                           :todo "STARTED")
-                                    )))))
+                                ))))
 (add-to-list 'org-agenda-custom-commands
-                     '("GT" "周任务"
+                     '("gt" "周任务"
                        todo ""  ((org-super-agenda-groups
                                   '(
-                                    (:name "今天"
-                                           ;; :time-grid t
-                                           :todo "TODAY")
                                     (:name "下一步"
                                            :todo "NEXT")
                                     (:name "延迟"
