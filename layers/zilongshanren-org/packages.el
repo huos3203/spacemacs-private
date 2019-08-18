@@ -443,26 +443,26 @@ See `org-capture-templates' for more information."
               ))
 
        (add-to-list 'org-agenda-custom-commands
-                    '("G" "周任务" todo ""
-                      ((org-super-agenda-groups
-                        '(
-                          ;; (:name "今天"
-                          ;;        :time-grid t
-                          ;;        :todo "TODAY")
-                          (:name "下一步"
-                                 :todo "NEXT")
-                          (:name "延迟"
-                                 :todo "DELAYED")
-                          (:name "Doing"
-                                 :todo "STARTED")
-                          (:name "项目安排"
-                                 :tag "proj")
-                          (:name "紧急且重要"
-                                 :priority "A")
-                          (:name "重要不紧急"
-                                 :priority "B")
-                          (:name "紧急不重要"
-                                 :priority "C"))))))
+                      '("GT" "周任务"
+                       todo ""  ((org-super-agenda-groups
+                                  '(
+                                    (:name "今天"
+                                           ;; :time-grid t
+                                           :todo "TODAY")
+                                    (:name "下一步"
+                                           :todo "NEXT")
+                                    (:name "延迟"
+                                           :todo "DELAYED")
+                                    (:name "Doing"
+                                           :todo "STARTED")
+                                    (:name "项目安排"
+                                           :tag "proj")
+                                    (:name "紧急且重要"
+                                           :priority "A")
+                                    (:name "重要不紧急"
+                                           :priority "B")
+                                    (:name "紧急不重要"
+                                           :priority "C"))))))
 
 
        (defvar zilongshanren-website-html-preamble
