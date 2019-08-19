@@ -336,24 +336,30 @@
       ;;add multi-file journal
       (setq org-capture-templates
             '(
-              ("N" "搜集" entry (file+headline org-agenda-file-inbox "inbox")
+              ("n" "搜集" entry (file+headline org-agenda-file-inbox "inbox")
                "* MAYBE %^{title} %^g\n %U"
                :empty-lines 1)
-              ;;录入任务
-              ("t" "组织，添加任务")
-              ("tt" "普通任务" entry (file+headline org-agenda-file-gtd "Workspace")
-               "* TODO [#B] %^{title} %^g\n %^{知识}p %^{技巧}p %^{意愿}p\n %?\n %U"
+              ("p" "项目安排" entry
+               (file+headline org-agenda-file-gtd "Project")
+               "* TODO [#A] %^{title}  %^g:proj:\n %?\n  %i\n %U"
                :empty-lines 1)
-              ("tb" "Book Reading Task" entry
-               (file+olp org-agenda-file-gtd "Reading" "Book")
-               "* TODO %^{书名}\n%u\n%a\n"
-               :clock-in t :clock-resume t)
-              ("tw" "周工作安排" entry
+              ("w" "周工作安排" entry
                (file+headline org-agenda-file-gtd "Work")
                "* TODO [#A] %^{title}  %^g:work:\n %?\n  %i\n %U"
                :empty-lines 1)
+              
+              ;;录入任务
+              ;; ("t" "组织，添加任务")
+              ("t" "普通任务" entry (file+headline org-agenda-file-gtd "Workspace")
+               "* TODO [#B] %^{title} %^g\n %^{知识}p %^{技巧}p %^{意愿}p\n %?\n %U"
+               :empty-lines 1)
+              ("b" "Book Reading Task" entry
+               (file+olp org-agenda-file-gtd "Reading" "Book")
+               "* TODO %^{书名}\n%u\n%a\n"
+               :clock-in t :clock-resume t)
+              
               ;;新建任务中引用当前任务
-              ("tl" "新建任务中引用当前任务" entry (file+headline org-agenda-file-note "Quick notes")
+              ("l" "新建任务中引用当前任务" entry (file+headline org-agenda-file-note "Quick notes")
                "* TODO [#C] %?\n  %i\n %a \n %U"
                :empty-lines 1)
              
@@ -421,7 +427,7 @@ See `org-capture-templates' for more information."
             '(
               ;; Inbox for displaying unscheduled tasks.
               ("p" "自我领导：个人意愿，两次创造，做出承诺"
-               todo ""
+               alltodo ""
                ((org-super-agenda-groups org-super-agenda-proj)
                 ;; (org-agenda-overriding-header "你好")
                 )
