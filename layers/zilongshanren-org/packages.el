@@ -76,8 +76,9 @@
       (require 'org-compat)
       (require 'org)
       ;; (add-to-list 'org-modules "org-habit")
-      (add-to-list 'org-modules 'org-habit)
+      (add-to-list 'org-modules 'org-habit 'org-super-agenda)
       (require 'org-habit)
+      (require 'org-super-agenda)
 
       (setq org-refile-use-outline-path 'file)
       (setq org-outline-path-complete-in-steps nil)
@@ -118,7 +119,7 @@
       ;; (add-to-list 'auto-mode-alist '("\.org\\'" . org-mode))
       ;; 定义任务状态关键词 https://www.cnblogs.com/quantumman/p/10808374.html
       (setq org-todo-keywords
-            (quote ((sequence "TODO(t)" "NEXT(n)" "STARTED(s)" "MAYBE(m)" "WAITING(w@/!)" "SOMEDAY(S)" "DELEGATED(d)" "|" "DONE(D!/!)" "CANCELLED(c@/!)" "MEETING(M)" "PHONE(p)")
+            (quote ((sequence "TODO(t)" "TODAY(T)" "NEXT(n)" "STARTED(s)" "MAYBE(m)" "WAITING(w@/!)" "SOMEDAY(S)" "DELEGATED(d)" "|" "DONE(D!/!)" "CANCELLED(c@/!)" "MEETING(M)" "PHONE(p)")
                     )))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
       ;; Org clock
@@ -288,6 +289,7 @@
       ;; define the refile targets
       (setq org-agenda-file-note (expand-file-name "notes.org" org-agenda-dir))
       (setq org-agenda-file-gtd (expand-file-name "gtd.org" org-agenda-dir))
+      (setq org-agenda-file-inbox (expand-file-name "inbox.org" org-agenda-dir))
       (setq org-agenda-file-journal (expand-file-name "journal.org" org-agenda-dir))
       (setq org-agenda-file-gzh (expand-file-name "gzh.org" org-agenda-dir))
       (setq org-agenda-file-code-snippet (expand-file-name "snippet.org" org-agenda-dir))
@@ -299,7 +301,26 @@
       (setq org-agenda-file-task (expand-file-name "task.org" org-agenda-dir))
       (setq org-agenda-files (list org-agenda-dir))
 
-        ;;
+      (setq org-super-agenda-gtd '((:name "下一步"
+                                          :todo "NEXT")
+                                   (:name "延迟"
+                                          :todo "DELAYED")
+                                   (:name "Doing"
+                                          :todo "STARTED")))
+      
+      (setq org-super-agenda-proj '((:name "项目安排"
+                                           :tag "proj")
+                                    (:name "Inbox"
+                                           :tag "MAYBE")
+                                    (:name "紧急且重要"
+                                           :priority "A")
+                                    (:name "重要不紧急"
+                                           :priority "B")
+                                    (:name "紧急不重要"
+                                           :priority "C")
+                                    (:name "我的习惯"
+                                           :tag "habit")))
+      ;;
       (setq org-html-export-study (expand-file-name "Agenda-Study.html" org-html-exports-dir))
 
       ;; C-n for the next org agenda item
@@ -315,43 +336,44 @@
       ;;add multi-file journal
       (setq org-capture-templates
             '(
-              ("y" "我的习惯")
-              ("yd" "每天" entry (file+headline org-agenda-file-gtd "我的习惯")
-               "* TODO %?\nSCHEDULED: <%<%Y-%m-%d %a .+1d>>\n:PROPERTIES:\n:CREATED: %U\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:LOGGING: DONE(!)\n:ARCHIVE: %%s_archive::* Habits\n:END:\n%U\n")
-              ("yw" "每周" entry (file+headline org-agenda-file-gtd "我的习惯")
-               "* TODO %?\nSCHEDULED: <%<%Y-%m-%d %a .+1w>>\n:PROPERTIES:\n:CREATED: %U\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:LOGGING: DONE(!)\n:ARCHIVE: %%s_archive::* Habits\n:END:\n%U\n")
-              ("yy" "做出承诺，信守承诺，致力于扩大影响圈" entry (file+headline org-agenda-file-gzh "我的影响圈")
-                "* %^{影响圈} %^g\n %^{角色}p %^{意愿}p\n\n %?"
-                :empty-lines 1)
-
+              ("N" "搜集" entry (file+headline org-agenda-file-inbox "inbox")
+               "* MAYBE %^{title} %^g\n %U"
+               :empty-lines 1)
               ;;录入任务
-              ("t" "自我管理：基于以终为始的自我领导勇于承诺信守承诺的原则,以位置矩阵ABC为导向,合理安排任务")
+              ("t" "组织，添加任务")
               ("tt" "普通任务" entry (file+headline org-agenda-file-gtd "Workspace")
-                 "* TODO [#B] %^{title} %^g\n %^{知识}p %^{技巧}p %^{意愿}p\n %?\n %U"
-                 :empty-lines 1)
+               "* TODO [#B] %^{title} %^g\n %^{知识}p %^{技巧}p %^{意愿}p\n %?\n %U"
+               :empty-lines 1)
               ("tb" "Book Reading Task" entry
-                (file+olp org-agenda-file-gtd "Reading" "Book")
-                  "* TODO %^{书名}\n%u\n%a\n"
-                  :clock-in t :clock-resume t)
+               (file+olp org-agenda-file-gtd "Reading" "Book")
+               "* TODO %^{书名}\n%u\n%a\n"
+               :clock-in t :clock-resume t)
               ("tw" "周工作安排" entry
-                (file+headline org-agenda-file-gtd "Work")
-                "* TODO [#A] %^{title}  %^g:work:\n %?\n  %i\n %U"
-                :empty-lines 1)
+               (file+headline org-agenda-file-gtd "Work")
+               "* TODO [#A] %^{title}  %^g:work:\n %?\n  %i\n %U"
+               :empty-lines 1)
               ;;新建任务中引用当前任务
               ("tl" "新建任务中引用当前任务" entry (file+headline org-agenda-file-note "Quick notes")
-                "* TODO [#C] %?\n  %i\n %a \n %U"
-                :empty-lines 1)
-              ;;用来做日志记录、日记写作一类的事情，新增的内容和过去的内容都按时间顺序排列，方便我们进行回顾
-              ("j" "做日志记录、日记写作,file+weektree顺序排列"
-                entry (file+weektree org-agenda-file-journal)
-                "* %U - %^{title} %^g\n %?\n"
-                :empty-lines 1)
+               "* TODO [#C] %?\n  %i\n %a \n %U"
+               :empty-lines 1)
+             
+              ;; 用来做日志记录、日记写作一类的事情，新增的内容和过去的内容都按时间顺序排列，方便我们进行回顾
+              ("j" "日总结周总结做日志记录、日记写作,file+weektree顺序排列"
+               entry (file+weektree org-agenda-file-journal)
+               "* %U - %^{title} %^g\n %?\n"
+               :empty-lines 1)
 
               ;;记录从网页上收集的资源、文章
               ("w" "记录从网页上收集的资源、文章" entry
-                (file+headline org-agenda-file-note "Web")
-                "* %U %:annotation\n\n%:initial\n\n%?")
+               (file+headline org-agenda-file-note "Web")
+               "* %U %:annotation\n\n%:initial\n\n%?")
 
+              ("H" "我的习惯 habit")
+              ("Hd" "每天" entry (file+headline org-agenda-file-gtd "我的习惯")
+               "* TODO %?\nSCHEDULED: <%<%Y-%m-%d %a .+1d>>\n:PROPERTIES:\n:CREATED: %U\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:LOGGING: DONE(!)\n:ARCHIVE: %%s_archive::* Habits\n:END:\n%U\n")
+              ("Hw" "每周" entry (file+headline org-agenda-file-gtd "我的习惯")
+               "* TODO %?\nSCHEDULED: <%<%Y-%m-%d %a .+1w>>\n:PROPERTIES:\n:CREATED: %U\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:LOGGING: DONE(!)\n:ARCHIVE: %%s_archive::* Habits\n:END:\n%U\n")
+              
               ;;其他
               ("s" "Code Snippet" entry
                (file org-agenda-file-code-snippet)
@@ -361,8 +383,8 @@
                :empty-lines 1)
               ;;密码管理
               ("p" "Passwords" entry (file org-agenda-file-passwords)
-                "* %U - %^{title} %^G:secret:\n\n  - 用户名: %^{用户名}\n  - 密码: %(get-or-create-password)"
-                :empty-lines 1 :kill-buffer t)
+               "* %U - %^{title} %^G:secret:\n\n  - 用户名: %^{用户名}\n  - 密码: %(get-or-create-password)"
+               :empty-lines 1 :kill-buffer t)
               ))
 
       (with-eval-after-load 'org-capture
@@ -397,56 +419,47 @@ See `org-capture-templates' for more information."
       ;; 格式:(key desc type match settings files)
       (setq org-agenda-custom-commands
             '(
-              ("w" . "任务安排")
-              ("wa" "A级任务" tags-todo "+PRIORITY=\"A\"")
-              ("wb" "B级任务" tags-todo "-Weekly-Monthly-Daily+PRIORITY=\"B\"")
-              ("wc" "C级任务" tags-todo "+PRIORITY=\"C\"")
-              ("p" . "项目安排")
-              ("pw" tags-todo "PROJECT+WORK+CATEGORY=\"work\"")
-              ("pl" tags-todo "PROJECT+DREAM+CATEGORY=\"boyer\"")
-              ("W" "周回顾"
-               ((stuck "") ;; review stuck projects as designated by org-stuck-projects
-                (tags-todo "PROJECT") ;; review all projects (assuming you use todo keywords to designate projects)
-                ))
-              ("y" "影响圈" tags "iDo")
-
-            ("A" . "已安排的todo清单")
-            ("Aa" "已安排todo事件:"
-             agenda ""
-             ((org-agenda-skip-function 'tjh/org-agenda-skip-only-timestamp-entries)
-             (org-agenda-overriding-header "所有org中已安排todo事件: "))
-            )
-            ("D" . "所有截止时间戳清单")
-            ("Da" "列出所有加了DEADLINE时间戳的任务"
-             agenda ""
-             ((org-agenda-skip-function 'tjh/org-agenda-skip-not-deadline-entries)
-             (org-agenda-overriding-header "所有org中,已设置截止日期的任务清单: "))
-            )
-            ("F" . "已完成的Done清单")
-            ("Fa" "列出总的和各个项目的已完成的任务"
-            agenda ""
-            ((org-agenda-skip-function 'tjh/org-agenda-skip-unfinished-entries)
-            (org-agenda-overriding-header "所有org中,已完成的任务清单: "))
-            )
-            ;; Inbox for displaying unscheduled tasks.
-            ("I" . "收集箱")
-            ("Ia" "列出所有尚未计划的任务条目，则可以构成GTD流程中的收集箱"
-            alltodo ""
-            ((org-agenda-skip-function 'tjh/org-agenda-skip-scheduled-entries)
-            (org-agenda-overriding-header "所有尚未计划的任务清单: "))
-            )
-        ))
+              ;; Inbox for displaying unscheduled tasks.
+              ("p" "自我领导：个人意愿，两次创造，做出承诺"
+               todo ""
+               ((org-super-agenda-groups org-super-agenda-proj)
+                ;; (org-agenda-overriding-header "你好")
+                )
+               )
+              ("n" "自我管理：要事第一，信守承诺"
+               todo ""
+               ((org-super-agenda-groups org-super-agenda-gtd)
+                ;; (org-agenda-overriding-header "任务列表")
+                )
+               )
+              ("l" "已安排todo事件:"
+               agenda ""
+               ((org-agenda-skip-function 'tjh/org-agenda-skip-only-timestamp-entries)
+                (org-agenda-overriding-header "所有org中已安排todo事件: "))
+               )
+              ("d" "列出所有加了DEADLINE时间戳的任务"
+               agenda ""
+               ((org-agenda-skip-function 'tjh/org-agenda-skip-not-deadline-entries)
+                (org-agenda-overriding-header "所有org中,已设置截止日期的任务清单: "))
+               )
+              ("f" "列出总的和各个项目的已完成的任务"
+               agenda ""
+               ((org-agenda-skip-function 'tjh/org-agenda-skip-unfinished-entries)
+                (org-agenda-overriding-header "所有org中,已完成的任务清单: "))
+               )
+              ("g" . "任务清单")
+              ))
 
       (defvar zilongshanren-website-html-preamble
         "<div class='nav'>
-<ul>
-<li><a href='https://itboyer.gitee.io'>博客</a></li>
-<li><a href='/index.html'>Wiki目录</a></li>
-</ul>
-</div>")
+        <ul>
+        <li><a href='https://itboyer.gitee.io'>博客</a></li>
+        <li><a href='/index.html'>Wiki目录</a></li>
+        </ul>
+        </div>")
       (defvar zilongshanren-website-html-blog-head
         " <link rel='stylesheet' href='css/site.css' type='text/css'/> \n
-    <link rel=\"stylesheet\" type=\"text/css\" href=\"/css/worg.css\"/>")
+        <link rel=\"stylesheet\" type=\"text/css\" href=\"/css/worg.css\"/>")
       (setq org-publish-project-alist
             `(
               ("blog-notes"
@@ -493,8 +506,8 @@ See `org-capture-templates' for more information."
       ;; hack for org headline toc
       (defun org-html-headline (headline contents info)
         "Transcode a HEADLINE element from Org to HTML.
-CONTENTS holds the contents of the headline.  INFO is a plist
-holding contextual information."
+        CONTENTS holds the contents of the headline.  INFO is a plist
+        holding contextual information."
         (unless (org-element-property :footnote-section-p headline)
           (let* ((numberedp (org-export-numbered-headline-p headline info))
                  (numbers (org-export-get-headline-number headline info))
@@ -629,6 +642,9 @@ holding contextual information."
 ;; 已安排日程的todo事件
 (defun tjh/org-agenda-skip-only-timestamp-entries ()
 (org-agenda-skip-entry-if 'nottodo 'any))
+
+(defun tjh/org-agenda-skip-only-untodo-entries ()
+  (org-agenda-skip-entry-if 'todo 'any))
 
 ;; 截止日期日程视图
 ;; Skip entries which are not deadlines.
