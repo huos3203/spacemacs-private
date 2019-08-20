@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: src
+# key: src
+# --
+#+BEGIN_SRC plantuml :file ./ABC.png
+@startwbs
+* A
+** B
+** C
+@endwbs
+#+END_SRC
