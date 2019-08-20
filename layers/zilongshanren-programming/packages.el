@@ -71,7 +71,7 @@
          ((and (functionp 'lsp-ui-mode) (featurep 'flycheck))
           (require 'lsp-ui-flycheck)
           (lsp-ui-flycheck-enable t)
-          (flycheck-mode 1)))
+          (flycheck-mode -1)))
 
         (when (functionp 'company-lsp)
           (company-mode 1)
@@ -96,7 +96,7 @@
             (setq lsp-ui-sideline-show-symbol nil))
         (progn
             
-          ;; (setq lsp-ui-sideline-show-code-actions t)
+          (setq lsp-ui-sideline-show-code-actions nil)
           ;; (setq lsp-ui-sideline-show-diagnostics t)
           (setq lsp-ui-sideline-show-hover t)
           ;; (setq lsp-ui-sideline-show-symbol t)
@@ -625,6 +625,11 @@
 
 (defun zilongshanren-programming/post-init-company ()
   (progn
+    (setq company-dabbrev-code-other-buffers 'all)
+    ;; enable dabbrev-expand in company completion https://emacs-china.org/t/topic/6381
+    (setq company-dabbrev-char-regexp "[\\.0-9a-z-_'/]")
+
+    
     (setq company-minimum-prefix-length 1
           company-idle-delay 0.08)
 

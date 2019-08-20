@@ -48,7 +48,25 @@
         chinese-conv
         ;; chinese-wbim
         pyim
+        lispyville
+        popup
         ))
+
+(defun zilongshanren-misc/post-init-popup ()
+  (use-package popup
+    :config
+    (progn
+      (define-key popup-menu-keymap (kbd "C-j") 'popup-next)
+      (define-key popup-menu-keymap (kbd "C-k") 'popup-previous)
+      )))
+
+(defun zilongshanren-misc/init-lispyville ()
+  (use-package lispyville
+    :init
+    (progn
+      (add-hook 'lispy-mode-hook #'lispyville-mode)
+      )
+    ))
 
 (defun zilongshanren-misc/post-init-chinese-conv ()
   (setq chinese-conv-opencc-program "/usr/local/bin/opencc")
@@ -992,7 +1010,7 @@ Search for a search tool in the order provided by `dotspacemacs-search-tools'."
 
         (setq-default pyim-english-input-switch-functions
                       '(pyim-probe-program-mode
-                        pyim-probe-auto-english
+                        ;; pyim-probe-auto-english
                         pyim-probe-org-structure-template))
 
 
@@ -1215,6 +1233,9 @@ Search for a search tool in the order provided by `dotspacemacs-search-tools'."
            ("!" my-open-file-in-external-app "Open file in external app")
            ("I" ivy-insert-action "insert")
            ("C" ivy-kill-new-action "copy")
+           ("d" ivy--kill-buffer-action )
+           ("k" ivy--kill-buffer-action "kill")
+           ("r" ivy--rename-buffer-action "rename")
            ("S" ivy-ff-checksum-action "Checksum")))
 
         (spacemacs/set-leader-keys "fad" 'counsel-goto-recent-directory)
@@ -1259,10 +1280,8 @@ Search for a search tool in the order provided by `dotspacemacs-search-tools'."
         (magit-add-section-hook 'magit-status-sections-hook
                                 'magit-insert-skip-worktree-files nil t)
 
-        (magit-define-section-jumper magit-jump-to-assume-unchanged "Assume-unchanged files" assume-unchanged)
         (define-key magit-status-mode-map "ga" 'magit-jump-to-assume-unchanged)
         
-        (magit-define-section-jumper magit-jump-to-skip-worktree "Skip-worktree files" skip-worktree)
         (define-key magit-status-mode-map "gw" 'magit-jump-to-skip-worktree)
         ))
 
