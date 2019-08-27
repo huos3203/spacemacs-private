@@ -1263,6 +1263,7 @@ Search for a search tool in the order provided by `dotspacemacs-search-tools'."
 (defun zilongshanren-misc/post-init-magit ()
   (progn
     (with-eval-after-load 'magit
+      (require 'forge)
       (progn
 
         (add-to-list 'magit-no-confirm 'stage-all-changes)
@@ -1288,7 +1289,7 @@ Search for a search tool in the order provided by `dotspacemacs-search-tools'."
     ;; prefer two way ediff
     (setq magit-ediff-dwim-show-on-hunks t)
 
-    (setq magit-repository-directories '("~/hsg/hexo/"))
+    (setq magit-repository-directories '("~/hsg/hugo/"))
     (setq magit-push-always-verify nil)
 
     (eval-after-load 'magit
