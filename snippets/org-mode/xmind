@@ -5,24 +5,23 @@
 
 #+BEGIN_SRC plantuml :file ../iPics/images/${2:xmind}.png
    @startmindmap
-     caption ${1:说明文字}
-     title ${2:标头}
-     center header
-     ${3:头部描述}
-     endheader
-     * root node
-     * child node
-     *_ child2 node
-     left side
-     * child left node
-     *_ child2 left node
-     '给图表添加备注
-     legend right
-     ${5:图表备注区域}
-     endlegend
-     
-     center footer
-     ${4:页眉描述}
-     endfooter
+   caption ${1:说明文字}
+   title ${2:标头}
+   center header
+   ${3:头部描述}
+   endheader
+   * root node
+   ** child node
+   left side
+   ** child left node
+   ***_ child2 left node
+   '给图表添加备注
+   legend right
+   ${5:图表备注区域}
+   endlegend
+   
+   center footer
+   ${4:页眉描述}
+   endfooter
    @endmindmap
 #+END_SRC

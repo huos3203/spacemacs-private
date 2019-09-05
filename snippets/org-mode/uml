@@ -5,14 +5,14 @@
 
 #+BEGIN_SRC plantuml :file ../iPics/images/${2:uml}.png
    @startuml
-     scale 2
-     page 1x1
-     title
-     ${1:图名}
-     创建时间: `(format-time-string "<%Y-%m-%d %H:%M>" (current-time))`
-     endtitle
-     left header
-     ${2:描述}
-     endheader
+   scale 2
+   page 1x1
+   title
+   ${1:图名}
+   创建时间: `(format-time-string "<%Y-%m-%d %H:%M>" (current-time))`
+   endtitle
+   left header
+   ${2:描述}
+   endheader
   @enduml
 #+END_SRC

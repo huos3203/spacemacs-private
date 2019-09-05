@@ -4,6 +4,7 @@
 # --
 #+BEGIN_SRC plantuml :file ../iPics/images/${2:wbs}.png
    @startwbs
-    * ${1:root}
+   * ${1:root}
+   ** ${2:subtree}
    @endwbs
 #+END_SRC
