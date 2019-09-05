@@ -6,9 +6,9 @@
 scale 2
 page 1x1
 title
-${1:}
-创建时间：`!v strftime("%Y-%m-%d %H:%M:%S%z")` 
+${1:图名}
+创建时间: `(format-time-string "<%Y-%m-%d %H:%M>" (current-time))`
 endtitle
 left header
-$2
+${2:描述}
 endheader
