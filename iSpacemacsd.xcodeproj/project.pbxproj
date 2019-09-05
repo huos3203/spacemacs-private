@@ -31,13 +31,13 @@
 		847B185922F85DB1002ED634 /* packages.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = packages.el; sourceTree = "<group>"; };
 		847B185A22F85DB1002ED634 /* config.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = config.el; sourceTree = "<group>"; };
 		847B185B22F85DB1002ED634 /* funcs.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = funcs.el; sourceTree = "<group>"; };
-		847B186322F85DB1002ED634 /* more */ = {isa = PBXFileReference; lastKnownFileType = text; path = more; sourceTree = "<group>"; };
 		847B186422F85DB1002ED634 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		847B186522F85DB1002ED634 /* custom.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = custom.el; sourceTree = "<group>"; };
 		847B186622F85DB1002ED634 /* README_CN.org */ = {isa = PBXFileReference; lastKnownFileType = text; path = README_CN.org; sourceTree = "<group>"; };
 		847B186822F85DB1002ED634 /* init-master.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = "init-master.el"; sourceTree = "<group>"; };
 		847B186A22F85DB1002ED634 /* init.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = init.el; sourceTree = "<group>"; };
 		847B186B22F85DB1002ED634 /* README.org */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.org; sourceTree = "<group>"; };
+		849127D7231E5F640037B1F5 /* org-mode */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "org-mode"; sourceTree = "<group>"; };
 		84D9F28722FB009800CB2B56 /* install_fail.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = install_fail.sh; sourceTree = "<group>"; };
 		84DDAB5C22F867F6006660D4 /* init-zl.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = "init-zl.el"; sourceTree = "<group>"; };
 		84DDAB5D22F86824006660D4 /* 安装说明.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "安装说明.md"; sourceTree = "<group>"; };
@@ -176,20 +176,12 @@
 		847B186122F85DB1002ED634 /* snippets */ = {
 			isa = PBXGroup;
 			children = (
+				849127D7231E5F640037B1F5 /* org-mode */,
 				84DDB13222F9B358006660D4 /* plantuml-mode */,
 				84DDB13122F9B1AD006660D4 /* markdown-mode */,
-				847B186222F85DB1002ED634 /* org-mode */,
 				847B186422F85DB1002ED634 /* README.md */,
 			);
 			path = snippets;
-			sourceTree = "<group>";
-		};
-		847B186222F85DB1002ED634 /* org-mode */ = {
-			isa = PBXGroup;
-			children = (
-				847B186322F85DB1002ED634 /* more */,
-			);
-			path = "org-mode";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
