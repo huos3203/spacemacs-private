@@ -2,6 +2,8 @@
 # name: 分解任务图
 # key: wbs
 # --
-@startwbs
-* ${1:根}
-@endwbs
+#+BEGIN_SRC plantuml :file ../iPics/images/${2:wbs}.png
+   @startwbs
+    * ${1:root}
+   @endwbs
+#+END_SRC
