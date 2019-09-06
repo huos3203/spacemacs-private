@@ -1263,7 +1263,6 @@ Search for a search tool in the order provided by `dotspacemacs-search-tools'."
 (defun zilongshanren-misc/post-init-magit ()
   (progn
     (with-eval-after-load 'magit
-      (require 'forge)
       (progn
 
         (add-to-list 'magit-no-confirm 'stage-all-changes)
