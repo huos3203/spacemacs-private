@@ -124,7 +124,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(sicp ssh-agency anki-editor ox-hugo org-super-agenda forge company-sourcekit swift-mode flycheck-swift)
+   dotspacemacs-additional-packages '(sicp ssh-agency anki-editor ox-hugo org-super-agenda forge company-sourcekit swift-mode flycheck-swift flycheck-plantuml)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -566,6 +566,20 @@ unwanted space when exporting org-mode to hugo markdown."
   ;; fix for the magit popup doesn't have a q keybindings
   (with-eval-after-load 'transient
     (transient-bind-q-to-quit))
+
+  ;;将plantuml与flycheck集成，以便在Emacs中突出显示自动语法错误
+  ;;https://github.com/alexmurray/flycheck-plantuml
+  (with-eval-after-load 'flycheck
+    (require 'flycheck-plantuml)
+    (flycheck-plantuml-setup))
+
+  (add-to-list
+    'org-src-lang-modes '("plantuml" . plantuml))
+
+  (add-to-list 'load-path
+                "~/.spacemacs.d/snippets/snippets")
+  (require 'yasnippet)
+  (yas-global-mode 1)
 
   ;; fix for the lsp error
   (defvar spacemacs-jump-handlers-fundamental-mode nil)

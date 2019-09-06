@@ -37,19 +37,23 @@
                                                      "xslt"
                                                      "xsl")
                                                    t) "\\'") 'nxml-mode))
-(setq nxml-slash-auto-complete-flag t)
+
 
 
 
 (add-to-list 'auto-mode-alist '("\\.mm\\'" . objc-mode))
 (add-to-list 'auto-mode-alist '("\\.c\\'" . c++-mode))
-;; Enable plantuml-mode for PlantUML files
+;;https://github.com/skuro/plantuml-mode
+;; 打开.plantuml扩展名的文件会自动启用plantuml-mode模式
 ;; (add-to-list 'auto-mode-alist '("\\.plantuml\\'" . plantuml-mode))
 (add-to-list 'auto-mode-alist (cons (concat "\\." (regexp-opt
                                                     '("uml"
-                                                      "pluntuml")
+                                                      "plantuml")
                                                     t) "\\'") 'plantuml-mode))
-(add-hook 'prog-mode-hook #'yas-minor-mode)
+(setq nxml-slash-auto-complete-flag t)
+;;在org-mode文档中编辑PlantUML源代码段,需要先注册plantuml为可用语言
+;;(add-to-list
+;;  'org-src-lang-modes '("plantuml" . plantuml))
 
 ;; return nil to write content to file
 (defun zilongshanren/untabify-buffer ()
