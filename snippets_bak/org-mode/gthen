@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# name: 创建then任务
-# key: gthen
-# --
-
-then [$1] on \{${2:hsg:100%}\} lasts ${3:1} days

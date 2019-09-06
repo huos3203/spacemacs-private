@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# name: 创建串行任务
-# key: gend
-# --
-
-[$1] starts at [$2]'s end

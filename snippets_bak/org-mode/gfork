@@ -1,9 +1,0 @@
-# -*- mode: snippet -*-
-# name: 活动并发分支
-# key: gfork
-# --
-fork
-:$1;
-fork again
-:$2; 
-end fork

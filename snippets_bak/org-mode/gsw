@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# name: 使用管道符号新建泳道
-# key: gsw
-# --
-
-|#${0:color}|${1:name}|
