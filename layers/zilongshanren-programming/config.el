@@ -44,8 +44,12 @@
 (add-to-list 'auto-mode-alist '("\\.mm\\'" . objc-mode))
 (add-to-list 'auto-mode-alist '("\\.c\\'" . c++-mode))
 ;; Enable plantuml-mode for PlantUML files
-(add-to-list 'auto-mode-alist '("\\.plantuml\\'" . plantuml-mode))
-
+;; (add-to-list 'auto-mode-alist '("\\.plantuml\\'" . plantuml-mode))
+(add-to-list 'auto-mode-alist (cons (concat "\\." (regexp-opt
+                                                    '("uml"
+                                                      "pluntuml")
+                                                    t) "\\'") 'plantuml-mode))
+(add-hook 'prog-mode-hook #'yas-minor-mode)
 
 ;; return nil to write content to file
 (defun zilongshanren/untabify-buffer ()
