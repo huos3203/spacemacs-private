@@ -332,6 +332,15 @@
                                            :priority "C")
                                     (:name "我的习惯"
                                            :tag "habit")))
+
+      (setq org-super-agenda-habit '((:name "个人"
+                                           :tag "me")
+                                    (:name "开发"
+                                           :tag "dev")
+                                    (:name "阅读"
+                                           :tag "read")
+                                    (:name "理财")
+                                         (:tag "mony")))
       ;;
       (setq org-html-export-study (expand-file-name "Agenda-Study.html" org-html-exports-dir))
 
@@ -444,6 +453,12 @@ See `org-capture-templates' for more information."
                 ;; (org-agenda-overriding-header "你好")
                 )
                )
+              ("B" "角色认定任务分类"
+               alltodo ""
+               ((org-super-agenda-groups org-super-agenda-habit)
+                  (org-agenda-overriding-header "你好")
+                )
+               )
               ("n" "自我管理：要事第一，信守承诺"
                todo ""
                ((org-super-agenda-groups org-super-agenda-gtd)
@@ -455,18 +470,63 @@ See `org-capture-templates' for more information."
                ((org-agenda-skip-function 'tjh/org-agenda-skip-only-timestamp-entries)
                 (org-agenda-overriding-header "所有org中已安排todo事件: "))
                )
-              ("d" "列出所有加了DEADLINE时间戳的任务"
+              ("I" . "收集箱")
+              ("Ia" "列出所有尚未计划的任务条目，则可以构成GTD流程中的收集箱"
+               alltodo ""
+               ((org-agenda-skip-function 'tjh/org-agenda-skip-scheduled-entries)
+                (org-agenda-overriding-header "所有尚未计划的任务清单: "))
+               )
+              ("In" "自我管理：基于以终为始的自我领导勇于承诺信守承诺的原则,以位置矩阵ABC为导向,合理安排任务"
+               todo nil
+               ;; ((org-agenda-skip-function 'tjh/org-agenda-skip-only-untodo-entries)
+               ;;  (org-agenda-overriding-header "展示搜集内容：")
+               ;;  )
+               )
+              
+              ("w" . "任务安排")
+              ("wa" "A级任务" tags-todo "+PRIORITY=\"A\"")
+              ("wb" "B级任务" tags-todo "-Weekly-Monthly-Daily+PRIORITY=\"B\"")
+              ("wc" "C级任务" tags-todo "+PRIORITY=\"C\"")
+              ("p" . "项目安排")
+              ("pw" tags-todo "PROJECT+WORK+CATEGORY=\"work\"")
+              ("pl" tags-todo "PROJECT+DREAM+CATEGORY=\"boyer\"")
+              ("W" "周回顾"
+               ((stuck "") ;; review stuck projects as designated by org-stuck-projects
+                (tags-todo "PROJECT") ;; review all projects (assuming you use todo keywords to designate projects)
+                ))
+
+              ("A" . "已安排的todo清单")
+              ("Aa" "已安排todo事件:"
+               agenda ""
+               ((org-agenda-skip-function 'tjh/org-agenda-skip-only-timestamp-entries)
+                (org-agenda-overriding-header "所有org中已安排todo事件: "))
+               )
+
+              ("D" . "所有截止时间戳清单")
+              ("Da" "列出所有加了DEADLINE时间戳的任务"
                agenda ""
                ((org-agenda-skip-function 'tjh/org-agenda-skip-not-deadline-entries)
                 (org-agenda-overriding-header "所有org中,已设置截止日期的任务清单: "))
                )
-              ("f" "列出总的和各个项目的已完成的任务"
+              ("F" . "已完成的Done清单")
+              ("Fa" "列出总的和各个项目的已完成的任务"
                agenda ""
                ((org-agenda-skip-function 'tjh/org-agenda-skip-unfinished-entries)
                 (org-agenda-overriding-header "所有org中,已完成的任务清单: "))
                )
               ("g" . "任务清单")
-              ))
+              ("gt" "将要做的事"
+               todo ""
+                ((org-super-agenda-groups org-super-agenda-proj)
+                ;; (org-agenda-overriding-header "你好")
+                )
+               )
+              ("gp" "自我管理：基于以终为始的自我领导勇于承诺信守承诺的原则"
+               todo ""
+               ((org-super-agenda-groups org-super-agenda-gtd)
+                ;; (org-agenda-overriding-header "任务列表")
+                )
+               )))
 
       (defvar zilongshanren-website-html-preamble
         "<div class='nav'>
