@@ -131,8 +131,34 @@
       ;; (add-to-list 'auto-mode-alist '("\.org\\'" . org-mode))
       ;; 定义任务状态关键词 https://www.cnblogs.com/quantumman/p/10808374.html
       (setq org-todo-keywords
-            (quote ((sequence "TODO(t)" "TODAY(T)" "NEXT(n)" "STARTED(s)" "MAYBE(m)" "WAITING(w@/!)" "SOMEDAY(S)" "DELEGATED(d)" "|" "DONE(D!/!)" "CANCELLED(c@/!)" "MEETING(M)" "PHONE(p)")
+            (quote (
+                    (sequence "TODO(t)" "TODAY(T)" "NEXT(n)" "STARTED(s)" "MAYBE(m)" "WAITING(w@/!)" "SOMEDAY(S)" "DELEGATED(d)" "|" "DONE(D!/!)" "CANCELLED(c@/!)" "MEETING(M)" "PHONE(p)")
                     )))
+      
+      (setq org-tag-alist '((:startgroup . nil)
+                            ("@场所" . ?a)
+                            (:grouptags . nil)
+                            ("@工位" . ?o)
+                            ("@工作室" . ?h)
+                            ("@手机上" . ?p)
+                            ("@打电话" . ?C)
+                            ("@在路上" . ?w)
+                            ("@餐桌上" . ?t)
+                            (:endgroup . nil)
+                            
+                            (:startgroup . nil)
+                            ("角色" . ?r)
+                            (:grouptags . nil)
+                            ("管理者" . ?g)
+                            ("开发者" . ?d)
+                            ("投资者" . ?t)
+                            ("阅读者" . ?y)
+                            ("我的" . ?m)
+                            ("儿子" . ?s)
+                            ("兄弟" . ?b)
+                            ("朋友" . ?f)
+                            (:endgroup . nil)
+                            ))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
       ;; Org clock
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -268,7 +294,7 @@
                   (and (outline-next-heading)
                        (org-flag-heading nil))) ; show the next heading
                 (when (outline-invisible-p)
-                  (show-entry))         ; display invisible text
+                  (show-e))             ; display invisible text
                 (run-hooks 'org-agenda-after-show-hook))))))
 
       ;;reset subtask
@@ -313,34 +339,23 @@
       (setq org-agenda-file-task (expand-file-name "task.org" org-agenda-dir))
       (setq org-agenda-files (list org-agenda-dir))
 
-      (setq org-super-agenda-gtd '((:name "下一步"
-                                          :todo "NEXT")
-                                   (:name "延迟"
-                                          :todo "DELAYED")
-                                   (:name "Doing"
-                                          :todo "STARTED")))
+      (setq org-super-agenda-gtd '((:name "下一步" :todo "NEXT")
+                                   (:name "延迟" :todo "DELAYED")
+                                   (:name "Doing" :todo "STARTED")
+                                   ))
       
-      (setq org-super-agenda-proj '((:name "项目安排"
-                                           :tag "proj")
-                                    (:name "Inbox"
-                                           :tag "MAYBE")
-                                    (:name "紧急且重要"
-                                           :priority "A")
-                                    (:name "重要不紧急"
-                                           :priority "B")
-                                    (:name "紧急不重要"
-                                           :priority "C")
-                                    (:name "我的习惯"
-                                           :tag "habit")))
+      (setq org-super-agenda-proj '((:name "项目安排" :tag "proj")
+                                    (:name "Inbox" :todo "MAYBE")
+                                    (:name "紧急且重要" :priority "A")
+                                    (:name "重要不紧急" :priority "B")
+                                    (:name "紧急不重要" :priority "C")
+                                    ))
 
-      (setq org-super-agenda-habit '((:name "个人"
-                                           :tag "me")
-                                    (:name "开发"
-                                           :tag "dev")
-                                    (:name "阅读"
-                                           :tag "read")
-                                    (:name "理财")
-                                         (:tag "mony")))
+      (setq org-super-agenda-habit '((:name "个人" :tag "我的")
+                                     (:name "开发" :tag "开发者")
+                                     (:name "阅读" :tag "阅读者")
+                                     (:name "理财" :tag "投资者")
+                                     ))
       ;;
       (setq org-html-export-study (expand-file-name "Agenda-Study.html" org-html-exports-dir))
 
@@ -456,7 +471,7 @@ See `org-capture-templates' for more information."
               ("B" "角色认定任务分类"
                alltodo ""
                ((org-super-agenda-groups org-super-agenda-habit)
-                  (org-agenda-overriding-header "你好")
+                (org-agenda-overriding-header "你好")
                 )
                )
               ("n" "自我管理：要事第一，信守承诺"
@@ -517,7 +532,7 @@ See `org-capture-templates' for more information."
               ("g" . "任务清单")
               ("gt" "将要做的事"
                todo ""
-                ((org-super-agenda-groups org-super-agenda-proj)
+               ((org-super-agenda-groups org-super-agenda-proj)
                 ;; (org-agenda-overriding-header "你好")
                 )
                )
