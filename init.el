@@ -549,7 +549,8 @@ you should place your code here."
 
   (add-hook 'org-mode-hook 'emojify-mode)
   (add-hook 'org-mode-hook 'auto-fill-mode)
-
+    (require 'ycmd)
+    (add-hook 'swift-mode-hook 'company-mode)
   ;; https://emacs-china.org/t/ox-hugo-auto-fill-mode-markdown/9547/4
   (defadvice org-hugo-paragraph (before org-hugo-paragraph-advice
                                         (paragraph contents info) activate)

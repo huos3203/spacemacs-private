@@ -262,11 +262,13 @@
     (setq-default yas-prompt-functions '(yas-ido-prompt yas-dropdown-prompt))
     (mapc #'(lambda (hook) (remove-hook hook 'spacemacs/load-yasnippet)) '(prog-mode-hook
                                                                       org-mode-hook
-                                                                      markdown-mode-hook))
+                                                                      markdown-mode-hook
+                                                                      plantuml-mode-hook))
 
     (spacemacs/add-to-hooks 'zilongshanren/load-yasnippet '(prog-mode-hook
                                                             markdown-mode-hook
-                                                            org-mode-hook))
+                                                            org-mode-hook
+                                                            plantuml-mode-hook))
     ))
 
 (defun zilongshanren-programming/post-init-racket-mode ()
@@ -563,7 +565,7 @@
   (progn
     (setq ycmd-tag-files 'auto)
     (setq ycmd-request-message-level -1)
-    (set-variable 'ycmd-server-command `("python" ,(expand-file-name "~/Github/ycmd/ycmd/__main__.py")))
+    (set-variable 'ycmd-server-command `("python" ,(expand-file-name "~/hsg/ycmd/ycmd/__main__.py")))
     (setq company-backends-c-mode-common '((company-c-headers
                                             company-dabbrev-code
                                             company-keywords
@@ -577,7 +579,9 @@
     (spacemacs/set-leader-keys-for-major-mode 'c-mode
       "tb" 'zilong/company-toggle-company-ycmd)
     (spacemacs/set-leader-keys-for-major-mode 'c++-mode
-      "tb" 'zilong/company-toggle-company-ycmd)))
+      "tb" 'zilong/company-toggle-company-ycmd)
+    (spacemacs/set-leader-keys-for-major-mode 'swift-mode
+    "tb" 'zilong/company-toggle-company-ycmd)))
 
 ;; when many project has the need to use tags, I will give etags-table and etags-update a try
 (defun zilongshanren-programming/init-etags-select ()
