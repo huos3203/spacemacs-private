@@ -579,9 +579,7 @@
     (spacemacs/set-leader-keys-for-major-mode 'c-mode
       "tb" 'zilong/company-toggle-company-ycmd)
     (spacemacs/set-leader-keys-for-major-mode 'c++-mode
-      "tb" 'zilong/company-toggle-company-ycmd)
-    (spacemacs/set-leader-keys-for-major-mode 'swift-mode
-    "tb" 'zilong/company-toggle-company-ycmd)))
+      "tb" 'zilong/company-toggle-company-ycmd)))
 
 ;; when many project has the need to use tags, I will give etags-table and etags-update a try
 (defun zilongshanren-programming/init-etags-select ()
