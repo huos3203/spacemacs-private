@@ -120,6 +120,9 @@ values."
      ;;(chinese :variables chinese-default-input-method 'pinyin
      ;;              chinese-enable-youdao-dict t)
      )
+    (require 'lsp-sourcekit)
+    (setenv "SOURCEKIT_TOOLCHAIN_PATH" "/Library/Developer/Toolchains/swift-latest.xctoolchain")
+    (setq lsp-sourcekit-executable (expand-file-name "/usr/local/bin/sourcekit-lsp"))
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
