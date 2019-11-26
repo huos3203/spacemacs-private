@@ -37,6 +37,8 @@ values."
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      (ivy :variables ivy-enable-advanced-buffer-information nil)
+     lsp-sourcekit
+     lsp-mode
      swift
      swift-mode
      flycheck-swift

@@ -40,7 +40,6 @@
 		84D9F28722FB009800CB2B56 /* install_fail.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = install_fail.sh; sourceTree = "<group>"; };
 		84DDAB5C22F867F6006660D4 /* init-zl.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = "init-zl.el"; sourceTree = "<group>"; };
 		84DDAB5D22F86824006660D4 /* 安装说明.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "安装说明.md"; sourceTree = "<group>"; };
-		F95A6B89238BA64F0029058E /* itboyer */ = {isa = PBXFileReference; lastKnownFileType = folder; path = itboyer; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -64,7 +63,6 @@
 		847B183722F85DB1002ED634 /* layers */ = {
 			isa = PBXGroup;
 			children = (
-				F95A6B89238BA64F0029058E /* itboyer */,
 				847B183822F85DB1002ED634 /* zilongshanren-programming */,
 				847B184422F85DB1002ED634 /* zilongshanren-org */,
 				847B184822F85DB1002ED634 /* zilongshanren-ui */,
