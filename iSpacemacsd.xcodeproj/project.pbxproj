@@ -37,7 +37,7 @@
 		847B186A22F85DB1002ED634 /* init.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = init.el; sourceTree = "<group>"; };
 		847B186B22F85DB1002ED634 /* README.org */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.org; sourceTree = "<group>"; };
 		84A75C592321FEB2009D8EF7 /* snippets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = snippets; sourceTree = "<group>"; };
-		84D9F28722FB009800CB2B56 /* install_fail.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = install_fail.sh; sourceTree = "<group>"; };
+		84D9F28722FB009800CB2B56 /* install.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = install.sh; sourceTree = "<group>"; };
 		84DDAB5C22F867F6006660D4 /* init-zl.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = "init-zl.el"; sourceTree = "<group>"; };
 		84DDAB5D22F86824006660D4 /* 安装说明.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "安装说明.md"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -46,7 +46,7 @@
 		847B17EE22F85D37002ED634 = {
 			isa = PBXGroup;
 			children = (
-				84D9F28722FB009800CB2B56 /* install_fail.sh */,
+				84D9F28722FB009800CB2B56 /* install.sh */,
 				84DDAB5D22F86824006660D4 /* 安装说明.md */,
 				847B186522F85DB1002ED634 /* custom.el */,
 				847B186A22F85DB1002ED634 /* init.el */,

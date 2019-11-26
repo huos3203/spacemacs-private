@@ -583,7 +583,7 @@ unwanted space when exporting org-mode to hugo markdown."
                 "~/.spacemacs.d/snippets/snippets")
   (require 'yasnippet)
   (yas-global-mode 1)
-  
+  (lsp-mode 1)
   ;;sourcekit-lsp 相关配置
   (require 'lsp-sourcekit)
   (setenv "SOURCEKIT_TOOLCHAIN_PATH" "/Library/Developer/Toolchains/swift-latest.xctoolchain")
